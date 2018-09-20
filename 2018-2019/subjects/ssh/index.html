@@ -3,13 +3,13 @@
   <head>
     <title>Secure Shell (SSH) (Media Engineering Web Dev)</title>
     <meta charset='utf-8'>
-    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-webdev/tree/bf9ae5c3848f229583aa425e0341c57e38c0fd81/subjects/ssh/README.md&quot;}'>
+    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-webdev/tree/6419aa67192e40a381f7ffd1181ea5b9abd7c4b8/subjects/ssh/README.md&quot;}'>
   </head>
   <body>
     <textarea id='source'>
 # Secure Shell (SSH)
 
-Learn to use the SSH cryptographic network protocol to connect to other computers.
+Learn about the SSH cryptographic network protocol and how to use the SSH command line tool to connect to other computers.
 
 This material is part of [web development courses](https://github.com/MediaComem/comem-webdev) for [Media Engineering](https://heig-vd.ch/formations/bachelor/filieres/ingenierie-des-medias).
 
@@ -152,7 +152,7 @@ Verifying - enter aes-256-cbc encryption password:
 .breadcrumbs[<a href="#1">Secure Shell (SSH)</a> > <a href="#5">Secure channel</a> > <a href="#6">Symmetric encryption</a>]
 
 The resulting `ciphertext.aes` file cannot be decrypted without the key.
-Executing the following command pipeline and entering the same key as before ("changeme") when prompted will decrypt it:
+Executing the following command pipeline and entering the same key as before when prompted will decrypt it:
 
 ```bash
 $> cat ciphertext.aes | openssl aes-256-cbc -d
