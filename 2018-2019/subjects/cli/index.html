@@ -3,13 +3,14 @@
   <head>
     <title>Command Line Introduction (Media Engineering Web Dev)</title>
     <meta charset='utf-8'>
-    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-webdev/tree/6419aa67192e40a381f7ffd1181ea5b9abd7c4b8/subjects/cli/README.md&quot;}'>
+    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-webdev/tree/23e1305cdf10e85c8eb94f266b82835e7945eb49/subjects/cli/README.md&quot;}'>
   </head>
   <body>
     <textarea id='source'>
 # Command Line Introduction
 
-Learn the basics of navigating your filesystem in a Unix command line interface.
+Learn what a command line interface is
+and learn the basics of navigating and manipulating your filesystem in a Unix shell.
 
 This material is part of [web development courses](https://github.com/MediaComem/comem-webdev) for [Media Engineering](https://heig-vd.ch/formations/bachelor/filieres/ingenierie-des-medias).
 
@@ -72,6 +73,9 @@ This is what a **program** looked like:
 
 <img class='w100' src='images/keypunch-machine.jpg' />
 
+> Punched cards are much older than computers.
+> They were first invented around 1725.
+
 
 ]
 
@@ -82,7 +86,7 @@ This is what a **program** looked like:
 .breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#2">A short history of computer interfaces</a>]
 
 Teletypewriters (TTYs) became the most popular **computer terminals** in the 1960s.
-They were basically electromechanical typewriters adapted as a user interface for early computers.
+They were basically electromechanical typewriters adapted as a user interface for early [mainframe computers][mainframe].
 
 This is when the first **command line interfaces (CLI)** were created.
 As you typed commands, a program running on the computer would interpret that input,
@@ -95,24 +99,44 @@ and the output would be printed on physical paper.
 
 .breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#2">A short history of computer interfaces</a>]
 
-.grid-50[
+.grid-35[
 
 As available memory increased, **video terminals** such as the [VT100][vt100] replaced TTYs in the 1970s.
 
-Initially they were fundamentally the same as TTYs: textual input/output devices.
+Initially they only displayed text.
+Hence they were fundamentally the same as TTYs: textual input/output devices.
 
-It's also in this period that the [Unix][unix] operating system was developed,
-the ancestor of [Linux][linux], also used as a basis for [macOS][macos] (since Mac OS X).
 
-In Unix-like systems, The program serving as the command line interpreter
+]
+.grid-65[
+
+<p class='center'><img class='w100' src='images/vt102.jpg' /></p>
+
+
+]
+---
+#### Unix & shells
+
+.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#2">A short history of computer interfaces</a> > <a href="#6">Video terminals (1970s)</a>]
+
+It's also in this period that the [Unix][unix] operating system was developed.
+Compared to earlier systems, Unix was the first **portable operating system**
+because it was written in the [C programming language][c], allowing it to be installed on multiple platforms.
+
+Unix is the ancestor of [Linux][linux].
+[FreeBSD][freebsd], a Unix-like system, is also used as the basis for [macOS][macos] (since Mac OS X).
+
+.grid-60[
+
+In Unix-like systems, The program serving as the **command line interpreter**
 (handling input/output from the terminal) is called a [**shell**][unix-shell]
 (because it wraps and hides the lower-level kernel interface).
 
 
 ]
-.grid-50[
+.grid-40[
 
-<img src='images/vt102.jpg' />
+<img class='w100' src='images/shell.png' />
 
 
 ]
@@ -137,7 +161,7 @@ They are one of the most common end user computer interface today.
 
 ]
 ---
-### More User Interfaces
+### More user interfaces
 
 .breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#2">A short history of computer interfaces</a>]
 
@@ -169,7 +193,7 @@ class: center, middle
 ---
 ### What is a Command Line Interface (CLI)?
 
-.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#9">Back to the command line</a>]
+.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#10">Back to the command line</a>]
 
 A CLI is a tool that allows you to use your computer by **writing** what you want to do (i.e. **commands**), instead of clicking on things.
 
@@ -183,11 +207,13 @@ It usually looks something like this:
 ---
 ### Why use it?
 
-.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#9">Back to the command line</a>]
+.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#10">Back to the command line</a>]
 
 A CLI is not very user-friendly or visually appealing but it has several advantages:
 
-* It requires very **few resources**.
+* It requires very **few resources** (e.g. memory),
+  which is convenient where resources are scarce
+  (e.g. embedded systems, web servers).
 * It can be easily **automated** through scripting.
 * Is is ultimately **more powerful and efficient** than any GUI for many computing tasks.
 
@@ -202,7 +228,7 @@ Or they have a limited GUI that does not have as many options as the CLI.
 ---
 ### Open a CLI
 
-.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#9">Back to the command line</a>]
+.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#10">Back to the command line</a>]
 
 **CLIs are available on every operating system.**
 
@@ -236,7 +262,7 @@ However, it does not use the same syntax as Unix-like CLIs _(plus, it's bad)_.
 ---
 ### Install Git Bash (Windows users only)
 
-.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#9">Back to the command line</a>]
+.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#10">Back to the command line</a>]
 
 You're going to install **Git Bash**, a software terminal that emulates the popular [Bourne-again shell (Bash)][bash] on Windows.
 
@@ -311,7 +337,7 @@ When the computer's working, the prompt disappear and you won't have the lead un
 ---
 ### Writing commands
 
-.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#14">How to use the CLI</a>]
+.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#15">How to use the CLI</a>]
 
 A command is a **word** that you have to type in the CLI that will **tell the computer what to do**.
 
@@ -330,7 +356,7 @@ Note the use of **spaces** to separate the differents **arguments** of a command
 ---
 ### Options vs. arguments
 
-.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#14">How to use the CLI</a>]
+.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#15">How to use the CLI</a>]
 
 There are two types of arguments to use with a command (if needed):
 
@@ -340,13 +366,13 @@ There are two types of arguments to use with a command (if needed):
 By convention, they are preceded by `-` or `--`:
 
 ```bash
-$> ls `-l` `--all`
+$> ls `-a` `-l`
 ```
 
 We use the `ls` command to list the content of the current directory. The options tell `ls` **how** it should do so:
 
-* `--all` tells it to print all elements (including hidden ones).
-* `-l` tells it to print elements in a list format, rather than on one line.
+* `-a` tells it to print **a**ll elements (including hidden ones).
+* `-l` tells it to print elements in a **l**ist format, rather than on one line.
 
 
 ]
@@ -374,7 +400,7 @@ In the **first example**, we use the `ls` command to list elements in the curren
 ---
 #### Options with values
 
-.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#14">How to use the CLI</a> > <a href="#16">Options vs. arguments</a>]
+.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#15">How to use the CLI</a> > <a href="#17">Options vs. arguments</a>]
 
 Some options require a **value**:
 
@@ -399,7 +425,7 @@ It then takes **one argument**:
 ---
 ### Naming things when using CLI
 
-.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#14">How to use the CLI</a>]
+.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#15">How to use the CLI</a>]
 
 You should avoid the following characters in directories and file names you want to manipulate with the CLI:
 
@@ -437,7 +463,7 @@ $> ls `Why\ So\ Serious`
 ---
 ### Auto-completion
 
-.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#14">How to use the CLI</a>]
+.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#15">How to use the CLI</a>]
 
 It's not fun to type directory names, especially when they have spaces you must escape in them,
 so the CLI has **auto-completion**. Type the first few characters of the file or directory you
@@ -473,7 +499,7 @@ then hit `Tab` again to get the full path.
 ---
 ### Getting help
 
-.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#14">How to use the CLI</a>]
+.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#15">How to use the CLI</a>]
 
 You can get help on most advanced commands by executing them with the `--help` option.
 As the option's name implies, it's designed to **give you some help** on how to use the command:
@@ -494,12 +520,11 @@ To try and get help, depending on what operating system you're on:
 ---
 #### Interactive help pages
 
-.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#14">How to use the CLI</a> > <a href="#20">Getting help</a>]
+.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#15">How to use the CLI</a> > <a href="#21">Getting help</a>]
 
 Some help pages or commands will take over the screen to display their content, hiding the prompt and previous interactions.
 
 Usually, it means that there is content that takes more than one screen to be shown.
-
 You can "scroll" up and down line-by-line using the arrow keys or the `Enter` key.
 
 To quit these interactive documentations, use the `q` (**q**uit) key.
@@ -509,7 +534,7 @@ To quit these interactive documentations, use the `q` (**q**uit) key.
 ---
 #### Unix Command Syntax
 
-.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#14">How to use the CLI</a> > <a href="#20">Getting help</a>]
+.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#15">How to use the CLI</a> > <a href="#21">Getting help</a>]
 
 When reading a command's manual or documentation,
 you may find some strange syntax that make little sense to you, like:
@@ -548,7 +573,7 @@ class: center, middle
 ---
 ### The `pwd` command
 
-.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#23">Using the filesystem</a>]
+.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#24">Using the filesystem</a>]
 
 When you open a CLI, it places you in your **home directory**.
 From there you can navigate your filesystem to go to other directories _(more on that later)_.
@@ -568,7 +593,7 @@ $> pwd
 ---
 ### The `ls` command
 
-.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#23">Using the filesystem</a>]
+.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#24">Using the filesystem</a>]
 
 Now that you know where you are, you might want to know **what your current directory is containing**.
 
@@ -578,11 +603,12 @@ Use the `ls` command:
 $> ls
 (lots and lots of files)
 ```
-> `ls` means "list": it lists the files and directories that the current directory contains.
+> `ls` means "list": it lists the contents of a directory.
 
-By default, `ls` doesn't list **hidden elements** (i.e. elements that start with a `.`).
+By default, `ls` doesn't list **hidden elements**.
+By convention in Unix-like systems, files that start with `.` (a dot) are hidden.
 
-If you want it to do that, you need to pass the `--all` (or `-a`) option:
+If you want it to do that, you need to pass the `-a` (**a**ll) option:
 
 ```bash
 $> ls -a
@@ -594,7 +620,7 @@ $> ls -a
 ---
 ### The `cd` command
 
-.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#23">Using the filesystem</a>]
+.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#24">Using the filesystem</a>]
 
 It's time to go out a little and move to another directory.
 
@@ -623,7 +649,7 @@ It is relative to the root of your filesystem.
 ---
 #### The `.` path
 
-.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#23">Using the filesystem</a> > <a href="#26">The `cd` command</a>]
+.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#24">Using the filesystem</a> > <a href="#27">The `cd` command</a>]
 
 The `.` path represents the current directory.
 The following sequences of commands are strictly equivalent:
@@ -673,7 +699,7 @@ This does not seem very useful now, but it will be in further tutorials.
 ---
 #### The `..` path
 
-.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#23">Using the filesystem</a> > <a href="#26">The `cd` command</a>]
+.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#24">Using the filesystem</a> > <a href="#27">The `cd` command</a>]
 
 To go up into the parent directory, use the `..` path (**don't forget the space between `cd` and `..`**):
 
@@ -693,7 +719,7 @@ $> cd
 $> cd /Users/Batman/Pictures/
 ```
 
-At anytime and from anywhere, you can return to your **home directory** with the `cd` command, without any argument (or with the `~`):
+At anytime and from anywhere, you can return to your **home directory** with the `cd` command, without any argument or with a `~` (tilde):
 
 .grid-50[
 
@@ -724,7 +750,7 @@ $> pwd
 ---
 #### Path reference
 
-.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#23">Using the filesystem</a> > <a href="#26">The `cd` command</a>]
+.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#24">Using the filesystem</a> > <a href="#27">The `cd` command</a>]
 
 Path        | Where
 :---        | :---
@@ -738,7 +764,7 @@ Path        | Where
 ---
 #### Your projects directory
 
-.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#23">Using the filesystem</a> > <a href="#26">The `cd` command</a>]
+.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#24">Using the filesystem</a> > <a href="#27">The `cd` command</a>]
 
 Throughout this course, you will often see the following command (_or something resembling it_):
 
@@ -753,7 +779,7 @@ For example, on John Doe's macOS system, it could be `/Users/jdoe/Projects`.
 >
 > It will obviously fail, unless you happen to have a `path` directory that contains a `to` directory that contains a `projects` directory...
 
-**IMPORTANT:** if your Windows/Linux/macOS username contains **spaces** or **accents**, you should **NOT** store your projects under your home directory.
+**WARNING:** if your Windows/Linux/macOS username contains **spaces** or **accents**, you should **NOT** store your projects under your home directory.
 You should find a path elsewhere on your filesystem.
 This will save you **a lot of needless pain and suffering**.
 
@@ -762,7 +788,7 @@ This will save you **a lot of needless pain and suffering**.
 ---
 ### The `mkdir` command
 
-.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#23">Using the filesystem</a>]
+.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#24">Using the filesystem</a>]
 
 You can create directories with the CLI.
 
@@ -790,7 +816,7 @@ $> mkdir -p ~/Documents/TopSecret/BatmobileSchematics
 ---
 ### The `touch` command
 
-.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#23">Using the filesystem</a>]
+.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#24">Using the filesystem</a>]
 
 The `touch` command updates the last modification date of a file.
 It also has the useful property of creating the file if it doesn't exist.
@@ -809,7 +835,7 @@ foo.txt
 ---
 ### The `echo` command
 
-.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#23">Using the filesystem</a>]
+.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#24">Using the filesystem</a>]
 
 The `echo` command simply **echo**es its arguments back to you:
 
@@ -821,19 +847,21 @@ Hello World
 This seems useless, but can be quite powerful when combined with Unix features like [redirection][redirection].
 For example, you can **redirect the output to a file**.
 
+The `>` operator means *"**write** the output of the previous command into a file"*.
 This allows you to quickly create a simple text file:
 
 ```bash
-$> echo foo > bar.txt
+$> echo foo `>` bar.txt
 
 $> ls
 bar.txt
 ```
 
-You can also append content to the end of an existing file:
+If the file already exists, it is overwritten.
+You can also use the `>>` operator, which means *"**append** the output of the previous command to the end of a file"*:
 
 ```bash
-$> echo bar >> bar.txt
+$> echo bar `>>` bar.txt
 ```
 
 
@@ -841,10 +869,9 @@ $> echo bar >> bar.txt
 ---
 ### The `cat` command
 
-.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#23">Using the filesystem</a>]
+.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#24">Using the filesystem</a>]
 
 The `cat` command can display one file or con**cat**enate multiple files in the CLI.
-
 For example, this displays the contents of the previous example's file:
 
 ```bash
@@ -869,7 +896,7 @@ World
 ---
 ### Stopping running commands
 
-.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#23">Using the filesystem</a>]
+.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#24">Using the filesystem</a>]
 
 Sometimes a command will take too long to execute.
 
@@ -893,7 +920,7 @@ By convention in Unix shells, you can always terminate a running command by typi
 ---
 ### Windows users
 
-.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#23">Using the filesystem</a>]
+.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#24">Using the filesystem</a>]
 
 This is how you reference or use your **drives** (`C:`, `D:`, etc) in Git Bash on Windows:
 
@@ -933,7 +960,7 @@ class: center, middle
 ---
 ### WHY?!
 
-.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#37">Vim</a>]
+.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#38">Vim</a>]
 
 Why would you need to learn it?
 
@@ -955,7 +982,7 @@ vim test.txt
 ---
 ### How vim works
 
-.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#37">Vim</a>]
+.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#38">Vim</a>]
 
 Vim can be unsettling at first, until you know how it works.
 
@@ -981,7 +1008,7 @@ To go into each mode use this keys :
 ---
 ### Normal mode
 
-.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#37">Vim</a>]
+.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#38">Vim</a>]
 
 The **Normal** mode of Vim is the one you're in when it starts.
 In this mode, you can move the cursor around with the arrow keys.
@@ -1004,7 +1031,7 @@ You can also use some commands to interact with the text:
 ---
 ### Command mode
 
-.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#37">Vim</a>]
+.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#38">Vim</a>]
 
 The **Command** mode, which you can only access from the **Normal** mode,
 is the one you'll mostly use to save and/or quit.
@@ -1050,7 +1077,7 @@ $> echo $PATH
 ---
 ### Understanding the `PATH`
 
-.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#42">The `PATH` variable</a>]
+.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#43">The `PATH` variable</a>]
 
 Assuming your `PATH` looks like this:
 
@@ -1081,7 +1108,7 @@ $> ls -a -l
 ---
 ### Using non-system commands
 
-.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#42">The `PATH` variable</a>]
+.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#43">The `PATH` variable</a>]
 
 Many development tools you install come with executables that you can run from the CLI (e.g. Git, Node.js, MongoDB).
 
@@ -1094,7 +1121,7 @@ However, sometimes you're downloading only an executable and saving it in a dire
 ---
 #### Custom command example
 
-.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#42">The `PATH` variable</a> > <a href="#44">Using non-system commands</a>]
+.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#43">The `PATH` variable</a> > <a href="#45">Using non-system commands</a>]
 
 Run the following commands to download a simple Hello World shell script and make it into an executable:
 
@@ -1121,9 +1148,16 @@ command not found: hello
 ---
 #### Executing a command in a directory that's not in the `PATH`
 
-.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#42">The `PATH` variable</a> > <a href="#44">Using non-system commands</a>]
+.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#43">The `PATH` variable</a> > <a href="#45">Using non-system commands</a>]
 
-To run such a command, you can **manually go to the directory** containing the executable and **run the command there**:
+You can run a command from anywhere by writing **the absolute path to the executable**:
+
+```bash
+$> ~/hello-program/bin/hello
+Hello World
+```
+
+You can also **manually go to the directory** containing the executable and **run the command there**:
 
 ```bash
 $> cd ~/hello-program/bin
@@ -1131,17 +1165,10 @@ $> ./hello
 Hello World
 ```
 
-> Because `./hello` starts with `./`, the shell interprets it as a path instead of a command.
-> It basically executes the `hello` file in the current directory (`.`).
+> When the first word on the CLI starts with `/`, `~/`, `./` or `../`, the shell interprets it as a file path.
+> Instead of looking for a command in the `PATH`, it simply executes that file.
 
-You can also run the command from anywhere by writing **the absolute path to the executable**:
-
-```bash
-$> ~/hello-program/bin/hello
-Hello World
-```
-
-But, ideally, you want to be able to **just type the name of the command**, and have it be executed.
+But, ideally, you want to be able to **just type `hello`**, and have the script be executed.
 For this, you need to **add the directory containing the executable** to your `PATH` variable.
 
 
@@ -1149,20 +1176,20 @@ For this, you need to **add the directory containing the executable** to your `P
 ---
 ### Updating the `PATH` variable
 
-.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#42">The `PATH` variable</a>]
+.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#43">The `PATH` variable</a>]
 
 To add a new path in your `PATH` variable, you have to edit a special file, used by your CLI interpreter (shell).
 This file depends upon the shell you are using:
 
-| CLI                 | File to edit                     |
-| :------------------ | :-----------                     |
-| Terminal / Git Bash | `~/.bashrc` or `~/.bash_profile` |
-| [ZSH][zsh-site]     | `~/.zshrc`                       |
+| CLI                 | File to edit      |
+| :------------------ | :-----------      |
+| Terminal / Git Bash | `~/.bash_profile` |
+| [ZSH][zsh-site]     | `~/.zshrc`        |
 
 Open the adequate file (`.bashrc` for this example) from the CLI with `vim` or your favorite editor if it can display hidden files:
 
 ```bash
-$> vim ~/.bashrc
+$> vim ~/.bash_profile
 ```
 
 Add this line at the bottom of your file
@@ -1177,7 +1204,7 @@ If you're in Vim, press `Esc` when you're done typing, then `:wq` and `Enter` to
 ---
 #### Does it work?
 
-.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#42">The `PATH` variable</a> > <a href="#47">Updating the `PATH` variable</a>]
+.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#43">The `PATH` variable</a> > <a href="#48">Updating the `PATH` variable</a>]
 
 > Remember to **close and re-open your CLI** to have the shell reload its configuration file.
 
@@ -1203,7 +1230,7 @@ Hello World
 ---
 #### What have I done?
 
-.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#42">The `PATH` variable</a> > <a href="#47">Updating the `PATH` variable</a>]
+.breadcrumbs[<a href="#1">Command Line Introduction</a> > <a href="#43">The `PATH` variable</a> > <a href="#48">Updating the `PATH` variable</a>]
 
 You have **added a directory to the `PATH`**:
 
@@ -1224,21 +1251,24 @@ The next time you run a command, your shell will **first look** in this director
   but the path to the **directory containing the executable**.
 
 * You must re-open your CLI for the change to take effect:
-  the shell configuration file (e.g. `~/.bashrc`) is only applied when the shell starts.
+  the shell configuration file (e.g. `~/.bash_profile`) is only applied when the shell starts.
 
 
 
 [augmented-reality]: https://en.wikipedia.org/wiki/Augmented_reality
 [bash]: https://en.wikipedia.org/wiki/Bash_(Unix_shell)
 [brain-interface]: https://en.wikipedia.org/wiki/Brain–computer_interface
+[c]: https://en.wikipedia.org/wiki/C_(programming_language)
 [cat]: https://en.wikipedia.org/wiki/Cat_(Unix)
 [cli]: https://en.wikipedia.org/wiki/Command-line_interface
 [eniac]: https://en.wikipedia.org/wiki/ENIAC
+[freebsd]: https://en.wikipedia.org/wiki/FreeBSD
 [gitbash]: https://git-for-windows.github.io/
 [gui]: https://en.wikipedia.org/wiki/Graphical_user_interface
 [keypunch]: https://en.wikipedia.org/wiki/Keypunch
 [linux]: https://en.wikipedia.org/wiki/Linux
 [macos]: https://en.wikipedia.org/wiki/MacOS
+[mainframe]: https://en.wikipedia.org/wiki/Mainframe_computer
 [motion-sensing]: https://en.wikipedia.org/wiki/Motion_detection
 [punched-card]: https://en.wikipedia.org/wiki/Punched_card
 [redirection]: https://en.wikipedia.org/wiki/Redirection_(computing)
