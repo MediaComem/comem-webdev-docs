@@ -3,7 +3,7 @@
   <head>
     <title>Cloud Computing (Media Engineering Web Dev)</title>
     <meta charset='utf-8'>
-    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-webdev/tree/b563d2a2960515f0b4224923225f3059f88c557a/subjects/cloud/README.md&quot;}'>
+    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-webdev/tree/a77b4b16749a71f49d8677df3e952294ecc2d0fe/subjects/cloud/README.md&quot;}'>
   </head>
   <body>
     <textarea id='source'>
@@ -32,6 +32,15 @@ In this model, **servers** share their resources with **clients**, who **request
 > In modern web applications, servers may also **push data to their clients**.
 
 ---
+### Server-side
+
+.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#2">Client-server model</a>]
+
+The **server** is what we will focus on.
+
+<img class='w100' src='images/client-server-backend-focus.jpg' />
+
+---
 ### Types of servers
 
 .breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#2">Client-server model</a>]
@@ -53,6 +62,7 @@ A server can provide many different kinds of content or services:
 
 These are just a few examples.
 There are many [types of servers][server-types] depending on the scenario and the resources you want to provide.
+One computer may fulfill one or several of these roles.
 
 ---
 ### [Internet hosting][internet-hosting]
@@ -65,12 +75,34 @@ Some companies provide Internet servers that can be owned or leased by customers
 One common example is [web hosting][web-hosting],
 where server space is provided to make websites accessible over the Internet.
 
+<p class='center'><img class='w75' src='images/web-hosting.jpg' /></p>
+
+---
+#### Types of web hosting
+
+.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#2">Client-server model</a> > <a href="#5">[Internet hosting][internet-hosting]</a>]
+
+.grid-33[
+
+[**Shared hosting**][shared-hosting]
+
+Multiple websites (from a few to a few hundred) are placed on the same server
+and **share a common pool of resources** (e.g. CPU, RAM).
+This is the least expensive and least flexible model.
+
+<p class='center'><img class='w95' src='images/shared-hosting.png' /></p>
+
+
+]
 .grid-33[
 
 [**Dedicated hosting**][dedicated-hosting]
 
-Customers get their own **physical server(s)** and gain full control over it.
-They are responsible for the security and maintenance of the servers.
+Customers get full control over their own **physical server(s)**.
+They are responsible for the security and maintenance of the server(s).
+This offers the most flexibility and best performance.
+
+<p class='center'><img class='w75' src='images/dedicated-hosting.png' /></p>
 
 
 ]
@@ -79,16 +111,64 @@ They are responsible for the security and maintenance of the servers.
 [**Virtual hosting**][virtual-hosting]
 
 Using [virtualization][virtualization], physical server resources can be divided into **virtual servers**.
-Customers may have root access to their own virtual space.
+Customers gain full access to their own virtual space.
+
+<p class='center'><img class='w90' src='images/virtualized-servers.png' /></p>
 
 
 ]
-.grid-33[
+---
+### [Virtualization][virtualization]
 
-[**Managed/shared hosting**][shared-hosting]
+.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#2">Client-server model</a>]
 
-Multiple websites (from a few to a few hundred) are placed on the same server and **share a common pool of resources** (e.g. CPU, RAM).
-This is the simplest but least performant model.
+.grid-45[
+
+**Hardware virtualization** refers to the creation of a **virtual machine** that acts like a real computer with an operating system.
+
+A **hypervisor** is installed on the **host machine**.
+It virtualizes CPU, memory, network and storage.
+
+A virtual machine, also called the **guest machine**,
+runs another operating system **isolated** from the host machine.
+
+For example, a computer running Microsoft Windows may host a virtual machine running an Ubuntu Linux operating system.
+Ubuntu-based software can be run in the virtual machine.
+
+
+]
+.grid-55[
+
+<img class='w100' src='images/virtualization-host-guest.jpg' />
+
+Popular virtualization solutions: [Linux KVM][kvm], [Parallels][parallels], [VirtualBox][virtualbox], [VMWare][vmware].
+
+
+]
+---
+#### Virtualized server architecture
+
+.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#2">Client-server model</a> > <a href="#7">[Virtualization][virtualization]</a>]
+
+Using virtual machines provides several advantages:
+applications can each run in an **isolated environment**
+custom-tailored to their needs (operating system, libraries, etc).
+**New virtual servers can be created in minutes.**
+**Resource utilization is maximized** instead of hardware running idle.
+
+.grid-30[
+
+On the other hand, virtual machines require **additional management effort**
+and their **performance is not as good** as dedicated servers.
+
+But for many use cases **the benefits outweight the costs**,
+which is why virtualization is heavily used in cloud computing.
+
+
+]
+.grid-70[
+
+<p class='center'><img class='w100' src='images/virtualized-server-architecture.png' /></p>
 
 
 
@@ -121,7 +201,7 @@ or **applications** running on those servers (e.g. web applications).
 ---
 ### Why use cloud computing?
 
-.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#5">Cloud computing</a>]
+.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#9">Cloud computing</a>]
 
 Cloud computing resources can be **rapidly provisioned** with **minimal management** effort, allowing great **economies of scale**.
 
@@ -129,19 +209,19 @@ Companies using cloud computing can **focus on their core business** instead of 
 
 .grid-50[
 
-**Advantages**
+<p class='center'><img class='w30' src='images/pros.jpg' /></p>
 
 Pay-as-you-go models **minimize up-front computer infrastructure costs**.
 
-Allows to more rapidly **adjust to fluctuating and unpredictable computing demands**.
+They allow to more rapidly **adjust to fluctuating and unpredictable computing demands**.
 
 
 ]
 .grid-50[
 
-**Disadvantages**
+<p class='center'><img class='w30' src='images/cons.jpg' /></p>
 
-**Limited customization** options (since you do not have complete control over the infrastructure).
+**Customization options are limited** since you do not have complete control over the infrastructure.
 
 **Security and privacy** can be a concern depending on a business's legal requirements.
 
@@ -150,41 +230,52 @@ Allows to more rapidly **adjust to fluctuating and unpredictable computing deman
 ---
 ### Deployment models
 
-.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#5">Cloud computing</a>]
+.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#9">Cloud computing</a>]
 
-.grid-33[
+.grid-50[
 
-**Private cloud**
+<p class='center'><img class='w70' src='images/private-cloud.png' /></p>
 
 Cloud infrastructure operated solely **for a single organization**,
 managed and hosted internally or by a third party.
 
-These clouds are very capital-intensive (they require physical space, hardware, etc).
+These clouds are very capital-intensive (they require physical space, hardware, etc)
+but are usually more customizable and secure.
 
 **Providers:** Microsoft, IBM, Dell, VMWare, HP, Cisco, Red Hat.
 
 
 ]
-.grid-33[
+.grid-50[
 
-**Public cloud**
+<p class='center'><img class='w70' src='images/public-cloud.png' /></p>
 
 Cloud services **open for public use**, provided over the Internet.
 
-There is little to no technical difference between private and public clouds,
-but security considerations might differ.
+Infrastructure is often shared through virtualization.
+Security guarantees are not as strong.
+However, costs are low and the solution is highly flexible.
 
 **Platforms:** [Amazon Web Services][aws], [Google Cloud Platform][google-cloud], [Microsoft Azure][azure].
 
 
 ]
-.grid-33[
+---
+#### Other deployment models
 
-**Hybrid cloud**
+.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#9">Cloud computing</a> > <a href="#11">Deployment models</a>]
 
-Composition of two or more clouds bound together to benefit from the advantages of multiple deployment models.
+.grid-45[
+
+There are also **hybrid clouds** composed of two or more clouds bound together to benefit from the advantages of multiple deployment models.
 
 For example, a platform may store sensitive data on a private cloud, but connect to other applications on a public cloud for greater flexibility.
+
+
+]
+.grid-55[
+
+<img class='w100' src='images/hybrid-cloud.png' />
 
 
 ]
@@ -198,10 +289,22 @@ for example **distributed clouds** where computing power can be provided by volu
 ---
 ### Public clouds
 
-.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#5">Cloud computing</a>]
+.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#9">Cloud computing</a>]
+
+.grid-35[
 
 Most public **cloud computing providers** such as Amazon, Google and Microsoft **own and operate the infrastructure** at their data center(s),
 and **provide cloud resources via the Internet**.
+
+
+]
+.grid-65[
+
+<p class='center'><img class='w100' src='images/data-center.jpg' /></p>
+
+
+]
+.container[
 
 For example, the Amazon Web Services cloud was [initially developed internally][aws-history] to support Amazon's retail trade.
 As their computing needs grew, they felt the need to build a computing infrastructure that was **completely standardized and automated**,
@@ -215,6 +318,8 @@ Today Amazon is one of the largest and most popular cloud services provider.
 
 
 
+
+]
 ---
 class: center, middle
 ## Service models
@@ -228,7 +333,7 @@ class: center, middle
 ---
 ### What can I get?
 
-.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#9">Service models</a>]
+.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#14">Service models</a>]
 
 These are the main service models offered by cloud providers.
 
@@ -243,7 +348,7 @@ Model                                | Acronym     | What is provided           
 ---
 ### On premise data center
 
-.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#9">Service models</a>]
+.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#14">Service models</a>]
 
 .grid-40[
 
@@ -267,7 +372,7 @@ so that you don't have to worry about them.
 ---
 ### Infrastructure as a Service (IaaS)
 
-.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#9">Service models</a>]
+.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#14">Service models</a>]
 
 .grid-40[
 
@@ -292,7 +397,7 @@ Setting up the runtime environment (databases, web servers, monitoring, etc) for
 ---
 #### How does IaaS work?
 
-.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#9">Service models</a> > <a href="#12">Infrastructure as a Service (IaaS)</a>]
+.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#14">Service models</a> > <a href="#17">Infrastructure as a Service (IaaS)</a>]
 
 System administrators connect to virtual machines run by the provider in their data center.
 They have complete control over the operating system.
@@ -303,7 +408,7 @@ To run a website, they must set up the runtime environment themselves.
 ---
 ### Platform as a Service (PaaS)
 
-.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#9">Service models</a>]
+.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#14">Service models</a>]
 
 .grid-40[
 
@@ -332,7 +437,7 @@ It also tends to be more expensive at larger scales.
 ---
 #### How does PaaS work?
 
-.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#9">Service models</a> > <a href="#14">Platform as a Service (PaaS)</a>]
+.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#14">Service models</a> > <a href="#19">Platform as a Service (PaaS)</a>]
 
 Developers send an application, for example a Laravel site written in PHP, to the provider, typically via Git.
 The managed runtime environment then detects the type of application and runs it, along with the necessary resources,
@@ -343,7 +448,7 @@ and serves it over the Internet.
 ---
 ### Function as a Service (FaaS)
 
-.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#9">Service models</a>]
+.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#14">Service models</a>]
 
 .grid-40[
 
@@ -372,7 +477,7 @@ The customer has little to no control over infrastructure, runtime and applicati
 ---
 #### How does FaaS work?
 
-.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#9">Service models</a> > <a href="#16">Function as a Service (FaaS)</a>]
+.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#14">Service models</a> > <a href="#21">Function as a Service (FaaS)</a>]
 
 Developers write individual functions and publish them to the provider.
 The platform provides various services to connect these functions together and to various resources for storage, communication, monitoring, etc.
@@ -382,7 +487,7 @@ The platform provides various services to connect these functions together and t
 ---
 ### Mobile Backend as a Service (MBaas)
 
-.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#9">Service models</a>]
+.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#14">Service models</a>]
 
 .grid-40[
 
@@ -410,7 +515,7 @@ It also produces the most **vendor lock-in**: it would be difficult to switch a 
 ---
 ### Software as a Service (SaaS)
 
-.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#9">Service models</a>]
+.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#14">Service models</a>]
 
 .grid-40[
 
@@ -433,7 +538,7 @@ and limited control over its configuration.
 ---
 ### Level of abstraction
 
-.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#9">Service models</a>]
+.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#14">Service models</a>]
 
 These models can be ordered by increasing level of abstraction,
 from IaaS being the lowest level and most flexible service model,
@@ -458,7 +563,7 @@ What's happening in the clouds?
 ---
 ### Service-oriented architecture (SOA)
 
-.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#21">Trends</a>]
+.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#26">Trends</a>]
 
 [Service-oriented architecture][soa] is a software design style where services are provided by application components over a network.
 This is popular in the cloud as it is easy to provision resources to deploy new components,
@@ -469,7 +574,7 @@ instead of having large monolithic applications.
 ---
 ### Microservices
 
-.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#21">Trends</a>]
+.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#26">Trends</a>]
 
 There is a tendency in recent years to try to **decompose** monolithic applications into smaller, more flexible [microservices][microservices]
 (a variant of service-oriented architecture).
@@ -477,13 +582,38 @@ The [Function-as-a-Service (FaaS)][faas] model is one more step in the same dire
 
 <p class='center'><img class='w65' src='images/monolithic-microservices-faas.png' /></p>
 
-This allows development to be parallelized as teams can work autonomously on separate services, or even individual functions.
+---
+#### [Microservice architecture][microservices-in-practice]
+
+.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#26">Trends</a> > <a href="#28">Microservices</a>]
+
+.grid-75[
+
+Enterprise software often offers hundreds of functionalities piled into a single monolithic application.
+The deployment, troubleshooting, scaling and upgrading of such monsters is a nightmare.
+
+Isolating services allows development to be parallelized as teams can work autonomously on separate services,
+or even individual functions.
 It also faciliates [continous delivery][cd] as each component can be deployed independently.
 
+
+]
+.grid-25[
+
+<p class='center'><img class='w90' src='images/monolithic-soa.png' /></p>
+
+
+]
+.container[
+
+<p class='center'><img class='w90' src='images/microservices.png' /></p>
+
+
+]
 ---
 ### Serverless computing
 
-.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#21">Trends</a>]
+.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#26">Trends</a>]
 
 The [Function-as-a-Service (FaaS)][faas] and [Mobile-Backend-as-a-Service (MBaaS)][mbaas]
 are often considered to be part of the [**serverless computing**][serverless] model.
@@ -493,7 +623,7 @@ It just means that **the server is abstracted** and managed by the platform prov
 
 .grid-50[
 
-**Advantages**
+<p class='center'><img class='w30' src='images/pros.jpg' /></p>
 
 * **Productivity**: the developer can focus on developing functions or business logic.
 * **Cost-effective**: only the resources used are billed
@@ -504,10 +634,9 @@ It just means that **the server is abstracted** and managed by the platform prov
 ]
 .grid-50[
 
-**Disadvantages**
+<p class='center'><img class='w30' src='images/cons.jpg' /></p>
 
-* **Performance**: infrequently-used code may be "shut down" when not in use,
-  resulting in greater latency.
+* **Greater latency**: infrequently-used code may be "shut down" when not in use.
 * **Resource limits**: not suited to some workloads like high-performance computing.
 * **Monitoring and debugging**: identifying performance problems may be more difficule than with traditional code.
 
@@ -516,15 +645,24 @@ It just means that **the server is abstracted** and managed by the platform prov
 
 ]
 ---
+## References
+
+.breadcrumbs[<a href="#1">Cloud Computing</a>]
+
+* [Advantages and Disadvantages of Virtual Server](https://www.esds.co.in/kb/advantages-and-disadvantages-of-virtual-server/)
+* [Microservices in Practice][microservices-in-practice]
+
+
+
+---
 ## TODO
 
 .breadcrumbs[<a href="#1">Cloud Computing</a>]
 
-* Dedicated/physical vs. virtual server/hosting (virtual server)
-* Additional diagrams for IaaS + PaaS + FaaS + MBaaS
-* Public cloud: security and privacy
+* Additional diagrams for MBaaS & SaaS
 * SOA, EaaS, https://en.wikipedia.org/wiki/Service-oriented_architecture
 * Containers, CaaS
+* container pictures
 
 
 
@@ -553,11 +691,14 @@ It just means that **the server is abstracted** and managed by the platform prov
 [heroku]: https://www.heroku.com/
 [iaas]: https://en.wikipedia.org/wiki/Infrastructure_as_a_service
 [internet-hosting]: https://en.wikipedia.org/wiki/Internet_hosting_service
+[kvm]: https://www.linux-kvm.org/
 [mbaas]: https://en.wikipedia.org/wiki/Mobile_backend_as_a_service
 [microservices]: https://en.wikipedia.org/wiki/Microservices
+[microservices-in-practice]: https://medium.com/microservices-in-practice/microservices-in-practice-7a3e85b6624c
 [openshift]: https://www.openshift.com/
 [other-deployment-models]: https://en.wikipedia.org/wiki/Cloud_computing#Others
 [paas]: https://en.wikipedia.org/wiki/Platform_as_a_service
+[parallels]: https://www.parallels.com
 [saas]: https://en.wikipedia.org/wiki/Software_as_a_service
 [server-types]: https://en.wikipedia.org/wiki/Server_(computing)#Purpose
 [serverless]: https://en.wikipedia.org/wiki/Serverless_computing
@@ -565,8 +706,10 @@ It just means that **the server is abstracted** and managed by the platform prov
 [slack]: https://slack.com/
 [soa]: https://en.wikipedia.org/wiki/Service-oriented_architecture
 [ubuntu]: https://www.ubuntu.com/
+[virtualbox]: https://www.virtualbox.org
 [virtual-hosting]: https://en.wikipedia.org/wiki/Virtual_private_server
 [virtualization]: https://en.wikipedia.org/wiki/Virtualization
+[vmware]: https://www.vmware.com
 [web-hosting]: https://en.wikipedia.org/wiki/Web_hosting_service
 [web-server]: https://en.wikipedia.org/wiki/Web_server
 
