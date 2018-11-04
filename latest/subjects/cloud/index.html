@@ -3,7 +3,7 @@
   <head>
     <title>Cloud Computing (Media Engineering Web Dev)</title>
     <meta charset='utf-8'>
-    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-webdev/tree/a77b4b16749a71f49d8677df3e952294ecc2d0fe/subjects/cloud/README.md&quot;}'>
+    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-webdev/tree/5a3b476fa5fe9afb451b12fd645c64e3308efc60/subjects/cloud/README.md&quot;}'>
   </head>
   <body>
     <textarea id='source'>
@@ -513,6 +513,31 @@ It also produces the most **vendor lock-in**: it would be difficult to switch a 
 
 ]
 ---
+#### How does MBaaS work?
+
+.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#14">Service models</a> > <a href="#23">Mobile Backend as a Service (MBaas)</a>]
+
+.grid-60[
+
+Developers are provided a backend in the form of ready-made cloud APIs.
+Most of the time, they can simply apply configuration instead of writing code.
+For example, Google's [Firebase][firebase] platform provides a real-time database which automatically handles synchronization of updates to all devices.
+
+
+]
+.grid-40[
+
+<p class='center'><img class='w100' src='images/firebase-features.png' /></p>
+
+
+]
+.container[
+
+<p class='center'><img class='w55' src='images/firebase.png' /></p>
+
+
+]
+---
 ### Software as a Service (SaaS)
 
 .breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#14">Service models</a>]
@@ -563,7 +588,7 @@ What's happening in the clouds?
 ---
 ### Service-oriented architecture (SOA)
 
-.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#26">Trends</a>]
+.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#27">Trends</a>]
 
 [Service-oriented architecture][soa] is a software design style where services are provided by application components over a network.
 This is popular in the cloud as it is easy to provision resources to deploy new components,
@@ -574,7 +599,7 @@ instead of having large monolithic applications.
 ---
 ### Microservices
 
-.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#26">Trends</a>]
+.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#27">Trends</a>]
 
 There is a tendency in recent years to try to **decompose** monolithic applications into smaller, more flexible [microservices][microservices]
 (a variant of service-oriented architecture).
@@ -585,7 +610,7 @@ The [Function-as-a-Service (FaaS)][faas] model is one more step in the same dire
 ---
 #### [Microservice architecture][microservices-in-practice]
 
-.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#26">Trends</a> > <a href="#28">Microservices</a>]
+.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#27">Trends</a> > <a href="#29">Microservices</a>]
 
 .grid-75[
 
@@ -613,7 +638,7 @@ It also faciliates [continous delivery][cd] as each component can be deployed in
 ---
 ### Serverless computing
 
-.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#26">Trends</a>]
+.breadcrumbs[<a href="#1">Cloud Computing</a> > <a href="#27">Trends</a>]
 
 The [Function-as-a-Service (FaaS)][faas] and [Mobile-Backend-as-a-Service (MBaaS)][mbaas]
 are often considered to be part of the [**serverless computing**][serverless] model.

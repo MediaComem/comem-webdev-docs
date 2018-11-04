@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Linux (Media Engineering Web Dev)</title>
+    <title>Unix Administration (Media Engineering Web Dev)</title>
     <meta charset='utf-8'>
-    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-webdev/tree/a77b4b16749a71f49d8677df3e952294ecc2d0fe/subjects/unix-admin/README.md&quot;}'>
+    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-webdev/tree/5a3b476fa5fe9afb451b12fd645c64e3308efc60/subjects/unix-admin/README.md&quot;}'>
   </head>
   <body>
     <textarea id='source'>
-# Linux
+# Unix Administration
 
-Learn the basics of the Linux operating system and how to manage it from the command line.
+Learn the basics of Unix and Unix-like operating systems like Linux, and how to manage them from the command line.
 
 This material is part of [web development courses](https://github.com/MediaComem/comem-webdev) for [Media Engineering](https://heig-vd.ch/formations/bachelor/filieres/ingenierie-des-medias).
 
@@ -19,7 +19,7 @@ This material is part of [web development courses](https://github.com/MediaComem
 ---
 ## File system
 
-.breadcrumbs[<a href="#1">Linux</a>]
+.breadcrumbs[<a href="#1">Unix Administration</a>]
 
 The **file system** controls how data is stored and retrieved.
 Without it, information on a storage medium such as a hard drive would be one large body of data,
@@ -37,7 +37,7 @@ Various file systems exit:
 ---
 ### Case-sensitivity
 
-.breadcrumbs[<a href="#1">Linux</a> > <a href="#2">File system</a>]
+.breadcrumbs[<a href="#1">Unix Administration</a> > <a href="#2">File system</a>]
 
 One of the differences between File systems is how they would treat these file names:
 
@@ -60,7 +60,7 @@ It is important to know this difference when you are transferring files between 
 ---
 ### File hierarchy
 
-.breadcrumbs[<a href="#1">Linux</a> > <a href="#2">File system</a>]
+.breadcrumbs[<a href="#1">Unix Administration</a> > <a href="#2">File system</a>]
 
 In Unix-like systems, the file system is said to be **rooted**,
 meaning that there is **always one root**, denoted by the path `/`.
@@ -73,7 +73,7 @@ Such volumes can be **mounted** on a directory, causing the volume's file system
 ---
 #### Inspecting volumes
 
-.breadcrumbs[<a href="#1">Linux</a> > <a href="#2">File system</a> > <a href="#4">File hierarchy</a>]
+.breadcrumbs[<a href="#1">Unix Administration</a> > <a href="#2">File system</a> > <a href="#4">File hierarchy</a>]
 
 The `df` (**d**isk **f**ree) shows you all volumes and the available space on each of them
 (the `-h` option displays size in a human-readable format instead of the raw number of bytes):
@@ -98,7 +98,7 @@ The [`/etc/fstab` file (**f**ile **s**ystems **tab**le)][fstab] defines mounted 
 ---
 #### Common Unix directories
 
-.breadcrumbs[<a href="#1">Linux</a> > <a href="#2">File system</a> > <a href="#4">File hierarchy</a>]
+.breadcrumbs[<a href="#1">Unix Administration</a> > <a href="#2">File system</a> > <a href="#4">File hierarchy</a>]
 
 | Directory | Description                                                 |
 | :---      | :---                                                        |
@@ -121,7 +121,7 @@ The [`/etc/fstab` file (**f**ile **s**ystems **tab**le)][fstab] defines mounted 
 ---
 ### Unix file types
 
-.breadcrumbs[<a href="#1">Linux</a> > <a href="#2">File system</a>]
+.breadcrumbs[<a href="#1">Unix Administration</a> > <a href="#2">File system</a>]
 
 Unix-like systems have regular files and directories like most other systems.
 But in addition to these, it represents various other things as files.
@@ -140,7 +140,7 @@ But in addition to these, it represents various other things as files.
 ---
 ## Linux users
 
-.breadcrumbs[<a href="#1">Linux</a>]
+.breadcrumbs[<a href="#1">Unix Administration</a>]
 
 Linux is a multi-user system (as are all Unix-like operating systems),
 meaning that more than one user can have access to the system at the same time.
@@ -161,7 +161,7 @@ Each of these user accounts is also identified by a **numerical user ID (or UID)
 ---
 ### User access
 
-.breadcrumbs[<a href="#1">Linux</a> > <a href="#8">Linux users</a>]
+.breadcrumbs[<a href="#1">Unix Administration</a> > <a href="#8">Linux users</a>]
 
 Managing users is done for the purpose of security by limiting access in certain ways, such as file permissions.
 
@@ -192,7 +192,7 @@ which grants that user all privileges assigned to each group.
 ---
 ### Permissions
 
-.breadcrumbs[<a href="#1">Linux</a> > <a href="#8">Linux users</a>]
+.breadcrumbs[<a href="#1">Unix Administration</a> > <a href="#8">Linux users</a>]
 
 Someone who logs in on a Linux system can use any file their user account is permitted to access.
 Linux determines whether or not a user or group can access a file based on the permissions assigned to it.
@@ -211,7 +211,7 @@ Additionally, the symbol `-` (a hyphen) indicates that no access is permitted.
 ---
 #### User categories
 
-.breadcrumbs[<a href="#1">Linux</a> > <a href="#8">Linux users</a> > <a href="#10">Permissions</a>]
+.breadcrumbs[<a href="#1">Unix Administration</a> > <a href="#8">Linux users</a> > <a href="#10">Permissions</a>]
 
 Each of the three permissions are assigned to three different categories of users:
 
@@ -224,7 +224,7 @@ Each of the three permissions are assigned to three different categories of user
 ---
 #### Checking file permissions
 
-.breadcrumbs[<a href="#1">Linux</a> > <a href="#8">Linux users</a> > <a href="#10">Permissions</a>]
+.breadcrumbs[<a href="#1">Unix Administration</a> > <a href="#8">Linux users</a> > <a href="#10">Permissions</a>]
 
 When you run the `ls` command with the **`-l` option** (long format),
 you can see more information about files, including their **type and permissions**:
@@ -257,7 +257,7 @@ l     rwx         rwx         rwx         bob    bob   ... some-link -> some-fil
 ---
 ## Administrative access
 
-.breadcrumbs[<a href="#1">Linux</a>]
+.breadcrumbs[<a href="#1">Unix Administration</a>]
 
 Many administrative tasks such as installing packages, managing users or changing file permissions
 can only be performed by the `root` user.
@@ -276,7 +276,7 @@ For example:
 ---
 ### The `sudo` command
 
-.breadcrumbs[<a href="#1">Linux</a> > <a href="#13">Administrative access</a>]
+.breadcrumbs[<a href="#1">Unix Administration</a> > <a href="#13">Administrative access</a>]
 
 The `sudo` command (which means "**s**uper**user** **do**") offers another approach to giving users administrative access.
 
@@ -305,7 +305,7 @@ drwxr-xr-x 24 root root 4096 Sep 12 14:44 ..
 ---
 #### The sudoers file
 
-.breadcrumbs[<a href="#1">Linux</a> > <a href="#13">Administrative access</a> > <a href="#14">The `sudo` command</a>]
+.breadcrumbs[<a href="#1">Unix Administration</a> > <a href="#13">Administrative access</a> > <a href="#14">The `sudo` command</a>]
 
 The `/etc/sudoers` file defines which users are trusted to use sudo.
 This is a classic example (the basic syntax is [described here][sudoers]):
@@ -332,7 +332,7 @@ This configuration allows members of the `sudo` group to execute any command
 ---
 ### The `su` command
 
-.breadcrumbs[<a href="#1">Linux</a> > <a href="#13">Administrative access</a>]
+.breadcrumbs[<a href="#1">Unix Administration</a> > <a href="#13">Administrative access</a>]
 
 The `su` command (which means "**s**witch **u**ser") is also a common administrative tool.
 As its name indicates, it can be used to log in as another user.
@@ -356,7 +356,7 @@ alice
 ---
 #### Performing tasks as another user
 
-.breadcrumbs[<a href="#1">Linux</a> > <a href="#13">Administrative access</a> > <a href="#16">The `su` command</a>]
+.breadcrumbs[<a href="#1">Unix Administration</a> > <a href="#13">Administrative access</a> > <a href="#16">The `su` command</a>]
 
 The previous `su` command opens a new shell in which you are logged in as `alice`.
 You can do whatever you need to do with the files accessible only to `alice`,
@@ -379,7 +379,7 @@ bob
 ---
 #### Performing administrative tasks as root
 
-.breadcrumbs[<a href="#1">Linux</a> > <a href="#13">Administrative access</a> > <a href="#16">The `su` command</a>]
+.breadcrumbs[<a href="#1">Unix Administration</a> > <a href="#13">Administrative access</a> > <a href="#16">The `su` command</a>]
 
 You can also use the `su` command to log in as `root`.
 You can perform any necessary administrative tasks without `sudo` (since you are `root`),
@@ -407,7 +407,7 @@ bob
 ---
 ### User database files
 
-.breadcrumbs[<a href="#1">Linux</a> > <a href="#13">Administrative access</a>]
+.breadcrumbs[<a href="#1">Unix Administration</a> > <a href="#13">Administrative access</a>]
 
 These files define what user accounts and groups are available on a Linux system:
 
@@ -425,7 +425,7 @@ Linux provides various **system administration commands** for this purpose, such
 ---
 #### The `/etc/passwd` file
 
-.breadcrumbs[<a href="#1">Linux</a> > <a href="#13">Administrative access</a> > <a href="#19">User database files</a>]
+.breadcrumbs[<a href="#1">Unix Administration</a> > <a href="#13">Administrative access</a> > <a href="#19">User database files</a>]
 
 Each line in [`/etc/passwd`][etc-passwd] defines a user account, with data separated by semicolons:
 
@@ -445,7 +445,7 @@ jdoe:x:500:500:jdoe:/home/jdoe:/bin/bash
 ---
 #### The `/etc/group` file
 
-.breadcrumbs[<a href="#1">Linux</a> > <a href="#13">Administrative access</a> > <a href="#19">User database files</a>]
+.breadcrumbs[<a href="#1">Unix Administration</a> > <a href="#13">Administrative access</a> > <a href="#19">User database files</a>]
 
 Each line in [`/etc/group`][etc-group] defines a group, also semicolon-separated:
 
@@ -462,7 +462,7 @@ vip:x:512:bob,eve
 ---
 #### The shadow files
 
-.breadcrumbs[<a href="#1">Linux</a> > <a href="#13">Administrative access</a> > <a href="#19">User database files</a>]
+.breadcrumbs[<a href="#1">Unix Administration</a> > <a href="#13">Administrative access</a> > <a href="#19">User database files</a>]
 
 Both `/etc/passwd` and `/etc/group` must be **readable by anyone** on a Linux system,
 because they are used by many programs to perform the translation from username to UID and from group name to GID.
@@ -483,7 +483,7 @@ These files are only readable by the `root` user
 ---
 ## User management
 
-.breadcrumbs[<a href="#1">Linux</a>]
+.breadcrumbs[<a href="#1">Unix Administration</a>]
 
 The following commands can be used to create, modify and delete users:
 
@@ -506,7 +506,7 @@ Use `man COMMAND` to read their manual, e.g. `man useradd`.
 ---
 ### Creating a login user
 
-.breadcrumbs[<a href="#1">Linux</a> > <a href="#23">User management</a>]
+.breadcrumbs[<a href="#1">Unix Administration</a> > <a href="#23">User management</a>]
 
 To create a **login user** (e.g. a user that can be used by an actual person to log in to the machine),
 you will need to use the `useradd` and `passwd` command:
@@ -533,7 +533,7 @@ in this example we use the more advanced [Bash shell][bash] (`/bin/bash`) for th
 ---
 #### Checking the created login user
 
-.breadcrumbs[<a href="#1">Linux</a> > <a href="#23">User management</a> > <a href="#24">Creating a login user</a>]
+.breadcrumbs[<a href="#1">Unix Administration</a> > <a href="#23">User management</a> > <a href="#24">Creating a login user</a>]
 
 You can see the newly created user (and corresponding group)
 by looking at the last line of the relevant user database files:
@@ -552,7 +552,7 @@ jdoe:x:1004:
 ---
 ### Creating a system user
 
-.breadcrumbs[<a href="#1">Linux</a> > <a href="#23">User management</a>]
+.breadcrumbs[<a href="#1">Unix Administration</a> > <a href="#23">User management</a>]
 
 To create a **system user** (e.g. a technical user that will need to run an application or service, but does not need to log in),
 the `useradd` command is sufficient:
@@ -572,7 +572,7 @@ The user is created a bit differently with the `--system` option:
 ---
 #### Checking the created system user
 
-.breadcrumbs[<a href="#1">Linux</a> > <a href="#23">User management</a> > <a href="#26">Creating a system user</a>]
+.breadcrumbs[<a href="#1">Unix Administration</a> > <a href="#23">User management</a> > <a href="#26">Creating a system user</a>]
 
 Check the user database files again:
 
@@ -606,7 +606,7 @@ This account is currently not available.
 ---
 ### Difference between login and system users
 
-.breadcrumbs[<a href="#1">Linux</a> > <a href="#23">User management</a>]
+.breadcrumbs[<a href="#1">Unix Administration</a> > <a href="#23">User management</a>]
 
 There is **no fundamental difference between a login and a system user**.
 It's simply an organizational distinction to make life easier for system administrators.
@@ -623,7 +623,7 @@ It's simply an organizational distinction to make life easier for system adminis
 ---
 ### Other useful user management commands
 
-.breadcrumbs[<a href="#1">Linux</a> > <a href="#23">User management</a>]
+.breadcrumbs[<a href="#1">Unix Administration</a> > <a href="#23">User management</a>]
 
 Here's a few command examples for common administrative tasks:
 
@@ -640,7 +640,7 @@ Here's a few command examples for common administrative tasks:
 ---
 ## Permission management
 
-.breadcrumbs[<a href="#1">Linux</a>]
+.breadcrumbs[<a href="#1">Unix Administration</a>]
 
 The following commands can be used to change the ownership or permissions of files:
 
@@ -654,7 +654,7 @@ Use `man COMMAND` to read their manual, e.g. `man chmod`.
 ---
 ### The `chown` command
 
-.breadcrumbs[<a href="#1">Linux</a> > <a href="#30">Permission management</a>]
+.breadcrumbs[<a href="#1">Unix Administration</a> > <a href="#30">Permission management</a>]
 
 The `chown` command is quite simple to use.
 The following command changes the owner of `file.txt` to `alice`:
@@ -682,7 +682,7 @@ $> sudo chown -R bob:bob /home/bob
 ---
 ### The `chmod` command
 
-.breadcrumbs[<a href="#1">Linux</a> > <a href="#30">Permission management</a>]
+.breadcrumbs[<a href="#1">Unix Administration</a> > <a href="#30">Permission management</a>]
 
 The [`chmod` command][chmod] is used to change file permissions and is a little more complicated.
 It has two syntaxes to specify which permissions you want: **symbolic modes** and **octal modes**.
@@ -707,7 +707,7 @@ $> sudo chmod 640 secret.txt
 ---
 #### Symbolic modes
 
-.breadcrumbs[<a href="#1">Linux</a> > <a href="#30">Permission management</a> > <a href="#32">The `chmod` command</a>]
+.breadcrumbs[<a href="#1">Unix Administration</a> > <a href="#30">Permission management</a> > <a href="#32">The `chmod` command</a>]
 
 The symbolic syntax of the `chmod` command is:
 
@@ -735,7 +735,7 @@ The available `[operators]` are:
 ---
 #### Using symbolic modes
 
-.breadcrumbs[<a href="#1">Linux</a> > <a href="#30">Permission management</a> > <a href="#32">The `chmod` command</a>]
+.breadcrumbs[<a href="#1">Unix Administration</a> > <a href="#30">Permission management</a> > <a href="#32">The `chmod` command</a>]
 
 The symbolic syntax basically allows you to specify:
 
@@ -758,7 +758,7 @@ $> sudo chmod g=rx
 ---
 #### Octal modes
 
-.breadcrumbs[<a href="#1">Linux</a> > <a href="#30">Permission management</a> > <a href="#32">The `chmod` command</a>]
+.breadcrumbs[<a href="#1">Unix Administration</a> > <a href="#30">Permission management</a> > <a href="#32">The `chmod` command</a>]
 
 Unix file permissions can be represented in [octal (base-8) notation][octal-modes]:
 
@@ -782,7 +782,7 @@ You can represent an entire file's permissions with 3 octal digits:
 ---
 #### Using octal modes
 
-.breadcrumbs[<a href="#1">Linux</a> > <a href="#30">Permission management</a> > <a href="#32">The `chmod` command</a>]
+.breadcrumbs[<a href="#1">Unix Administration</a> > <a href="#30">Permission management</a> > <a href="#32">The `chmod` command</a>]
 
 The octal syntax does not allow you to make a granular change to a specific permissions (e.g. `u+x`).
 However, it does allow you to easily change an entire file's permissions in one command.
@@ -804,7 +804,7 @@ $> sudo chmod 644 secret.txt
 ---
 ## References
 
-.breadcrumbs[<a href="#1">Linux</a>]
+.breadcrumbs[<a href="#1">Unix Administration</a>]
 
 * [Red Hat Enterprise Linux - Introduction to System Administration](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/4/html/Introduction_To_System_Administration/)
 * [Red Hat Enterprise Linux - Security Guide](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/4/html/Security_Guide/)
@@ -814,7 +814,7 @@ $> sudo chmod 644 secret.txt
 ---
 ## TODO
 
-.breadcrumbs[<a href="#1">Linux</a>]
+.breadcrumbs[<a href="#1">Unix Administration</a>]
 
 * https://en.wikipedia.org/wiki/Everything_is_a_file
 * Ports
@@ -828,6 +828,7 @@ $> sudo chmod 644 secret.txt
   * whoami
   * id
 * Package management
+* Environment variables
 
 
 
