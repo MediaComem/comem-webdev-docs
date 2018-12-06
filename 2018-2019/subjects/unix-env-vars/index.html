@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Unix Environment Variables (Media Engineering Web Dev)</title>
+    <meta charset='utf-8'>
+    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-webdev/tree/e723adde2542da89698a56ef07303f54124cd2e1/subjects/unix-env-vars/README.md&quot;}'>
+  </head>
+  <body>
+    <textarea id='source'>
+# Unix Environment Variables
+
+Learn how to manage Unix environment variables.
+
+This material is part of [web development courses](https://github.com/MediaComem/comem-webdev) for [Media Engineering](https://heig-vd.ch/formations/bachelor/filieres/ingenierie-des-medias).
+
+
+**You will need**
+
+* A Unix CLI
+
+**Recommended reading**
+
+* [Unix Processes](../unix-processes/)
+
+<!-- START doctoc -->
+<!-- END doctoc -->
+
+
+
+---
+class: center, middle
+## Environment variables
+
+.breadcrumbs[<a href="#1">Unix Environment Variables</a>]
+
+
+
+Affecting processes since 1979.
+
+---
+### What is an environment variable?
+
+.breadcrumbs[<a href="#1">Unix Environment Variables</a> > <a href="#2">Environment variables</a>]
+
+An environment variable is a **named value that can affect the way running processes will behave** on a computer.
+
+When a process runs on a Unix system, it may query variables such as:
+
+* `HOME` - The home directory of the user running the process.
+* `LANG` - The default locale.
+* `TMP` - The directory in which to store temporary files.
+* And more.
+
+Another common example is the [`PATH`][path],
+an environment variable that indicates in which directories to look for binaries to execute when typing commands in a shell.
+
+---
+### What are they for?
+
+.breadcrumbs[<a href="#1">Unix Environment Variables</a> > <a href="#2">Environment variables</a>]
+
+Environment variables can **affect the behavior of programs without modifying them**.
+
+If a program bases some of its behavior on an environment variable,
+you can simply change the value of the variable before running it,
+allowing you to customize it without changing one line of code.
+
+Environment variables can be used as a dynamic means of configuration,
+an alternative to configuration files or hardcoded values.
+
+
+
+---
+class: center, middle
+## Managing environment variables
+
+.breadcrumbs[<a href="#1">Unix Environment Variables</a>]
+
+
+
+Getting them, listing them, setting them, deleting them.
+
+---
+### Getting an environment variable
+
+.breadcrumbs[<a href="#1">Unix Environment Variables</a> > <a href="#5">Managing environment variables</a>]
+
+TODO
+
+---
+### The `env` command
+
+.breadcrumbs[<a href="#1">Unix Environment Variables</a> > <a href="#5">Managing environment variables</a>]
+
+TODO
+
+
+
+---
+## References
+
+.breadcrumbs[<a href="#1">Unix Environment Variables</a>]
+
+* [Environment Variable][env-var]
+
+
+
+[env-var]: https://en.wikipedia.org/wiki/Environment_variable
+[path]: https://en.wikipedia.org/wiki/Path_(computing)
+
+    </textarea>
+    <script src='https://embed.runkit.com'></script>
+    <script src='../../subject-66919e2922fc0f346af5.js'></script>
+  </body>
+</html>

@@ -3,7 +3,7 @@
   <head>
     <title>Unix Administration (Media Engineering Web Dev)</title>
     <meta charset='utf-8'>
-    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-webdev/tree/bd61529ed2e31bdfcc260b0ba95409ef0d0ee720/subjects/unix-admin/README.md&quot;}'>
+    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-webdev/tree/e723adde2542da89698a56ef07303f54124cd2e1/subjects/unix-admin/README.md&quot;}'>
   </head>
   <body>
     <textarea id='source'>
@@ -138,11 +138,11 @@ But in addition to these, it represents various other things as files.
 
 
 ---
-## Linux users
+## Unix users
 
 .breadcrumbs[<a href="#1">Unix Administration</a>]
 
-Linux is a multi-user system (as are all Unix-like operating systems),
+Unix and Unix-like systems like Linux are multi-user systems,
 meaning that more than one user can have access to the system at the same time.
 
 A **user** is **anyone who uses the system**.
@@ -151,31 +151,31 @@ This may be:
 * A **person**, like Alice or Bob.
 * A **system service**, like a MySQL database or an SSH server.
 
-Linux maintains a list of user accounts representing these people and system services,
+A Unix system maintains a list of user accounts representing these people and system services,
 each with a different **name** such as `alice`, `bob` or `sshd`.
 Each of these user accounts is also identified by a **numerical user ID (or UID)**.
 
-> Note that one person may have multiple user accounts on a Linux system,
+> Note that one person may have multiple user accounts on a Unix system,
 > as long as they each have a different name.
 
 ---
 ### User access
 
-.breadcrumbs[<a href="#1">Unix Administration</a> > <a href="#8">Linux users</a>]
+.breadcrumbs[<a href="#1">Unix Administration</a> > <a href="#8">Unix users</a>]
 
 Managing users is done for the purpose of security by limiting access in certain ways, such as file permissions.
 
 The **superuser**, named `root`, has complete access to the system and its configuration.
 It is intended for administrative use only.
 
-Linux also has the notion of **groups**.
+Unix also has the notion of **groups**.
 Much like a user account, a group is identified by a **name** and by a **numerical group ID (or GID)**.
 Each user belongs to a **main group**, and can also be **added to other groups**,
 which grants that user all privileges assigned to each group.
 
 .grid-55[
 
-> Linux usually creates a main group for each user, with the same name as the user.
+> A Unix system usually creates a main group for each user, with the same name as the user.
 > For example, user `alice` has the `alice` group as its main group.
 >
 > This provides a quick way of giving `bob` access to `alice`'s files
@@ -192,10 +192,10 @@ which grants that user all privileges assigned to each group.
 ---
 ### Permissions
 
-.breadcrumbs[<a href="#1">Unix Administration</a> > <a href="#8">Linux users</a>]
+.breadcrumbs[<a href="#1">Unix Administration</a> > <a href="#8">Unix users</a>]
 
-Someone who logs in on a Linux system can use any file their user account is permitted to access.
-Linux determines whether or not a user or group can access a file based on the permissions assigned to it.
+Someone who logs in on a Unix system can use any file their user account is permitted to access.
+The system determines whether or not a user or group can access a file based on the permissions assigned to it.
 
 There are **three different permissions** for file, directories and executables.
 They are represented by one character:
@@ -211,7 +211,7 @@ Additionally, the symbol `-` (a hyphen) indicates that no access is permitted.
 ---
 #### User categories
 
-.breadcrumbs[<a href="#1">Unix Administration</a> > <a href="#8">Linux users</a> > <a href="#10">Permissions</a>]
+.breadcrumbs[<a href="#1">Unix Administration</a> > <a href="#8">Unix users</a> > <a href="#10">Permissions</a>]
 
 Each of the three permissions are assigned to three different categories of users:
 
@@ -224,7 +224,7 @@ Each of the three permissions are assigned to three different categories of user
 ---
 #### Checking file permissions
 
-.breadcrumbs[<a href="#1">Unix Administration</a> > <a href="#8">Linux users</a> > <a href="#10">Permissions</a>]
+.breadcrumbs[<a href="#1">Unix Administration</a> > <a href="#8">Unix users</a> > <a href="#10">Permissions</a>]
 
 When you run the `ls` command with the **`-l` option** (long format),
 you can see more information about files, including their **type and permissions**:
@@ -326,7 +326,7 @@ This configuration allows members of the `sudo` group to execute any command
 > as you will break the `sudo` command if you introduce syntax errors into the file.
 > Use the `visudo` command which will not let you save unless the file is valid.
 
-> With these defaults settings common to most Linux distributions,
+> With these defaults settings common to most Unix systems,
 > you can simply add a user to the `sudo` group to make them trusted `sudo` users.
 
 ---
@@ -417,7 +417,7 @@ bob
 
 .breadcrumbs[<a href="#1">Unix Administration</a> > <a href="#13">Administrative access</a>]
 
-These files define what user accounts and groups are available on a Linux system:
+These files define what user accounts and groups are available on a Unix system:
 
 | File           | Contents                                                                                                                                              |
 | :---           | :---                                                                                                                                                  |
@@ -428,7 +428,7 @@ These files define what user accounts and groups are available on a Linux system
 
 You should **never edit these files by hand**.
 
-Linux provides various **system administration commands** for this purpose, such as `useradd`, `passwd` and `groupadd`.
+Unix systems provides various **system administration commands** for this purpose, such as `useradd`, `passwd` and `groupadd` for Linux.
 
 ---
 #### The `/etc/passwd` file
@@ -444,7 +444,7 @@ jdoe:x:500:500:jdoe:/home/jdoe:/bin/bash
 * **Username** (`jdoe`) - The name of the user account (used to log in).
 * **Password** (`x`) - User password (or `x` if the password is stored in `/etc/shadow`).
 * **User ID (UID)** (`500`) - The numerical equivalent of the username.
-* **Group ID (GID)** (`500`) - The numerical equivalent of the user's primary group name (often the same as the UID for most users, on a Linux system with default settings).
+* **Group ID (GID)** (`500`) - The numerical equivalent of the user's primary group name (often the same as the UID for most users, on a Unix system with default settings).
 * **GECOS** (`jdoe`) - Historical field used to store extra information (usually the user's full name).
 * **Home directory** (`/home/jdoe`) - The absolute path to the user's home directory.
 * **Shell** (`/bin/bash`) - The program automatically launched whenever the user logs in (e.g. on a terminal or through SSH).
@@ -472,7 +472,7 @@ vip:x:512:bob,eve
 
 .breadcrumbs[<a href="#1">Unix Administration</a> > <a href="#13">Administrative access</a> > <a href="#19">User database files</a>]
 
-Both `/etc/passwd` and `/etc/group` must be **readable by anyone** on a Linux system,
+Both `/etc/passwd` and `/etc/group` must be **readable by anyone** on a Unix system,
 because they are used by many programs to perform the translation from username to UID and from group name to GID.
 
 It is therefore bad practice to store passwords in these files, even encrypted or hashed.
@@ -509,7 +509,7 @@ The following commands can be used to create, modify and delete users:
 Use `man COMMAND` to read their manual, e.g. `man useradd`.
 
 > Note that these commands are specific to [Ubuntu][ubuntu].
-> They might differ slightly in other Linux distributions
+> They might differ slightly in other Linux distributions or other Unix systems.
 
 ---
 ### Creating a login user
@@ -760,7 +760,7 @@ $> sudo chmod u+rw file.txt
 The following command sets the permissions for `g` (the group of the file) to `r` (read) and `x` (execute):
 
 ```bash
-$> sudo chmod g=rx
+$> sudo chmod g=rx file.txt
 ```
 
 ---
@@ -804,7 +804,7 @@ $> sudo chmod 755 script.sh
 The following command sets permissions `rw-r-----` to `secret.txt`:
 
 ```bash
-$> sudo chmod 644 secret.txt
+$> sudo chmod 640 secret.txt
 ```
 
 
