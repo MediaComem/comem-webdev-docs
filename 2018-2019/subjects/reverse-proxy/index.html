@@ -3,7 +3,7 @@
   <head>
     <title>Reverse Proxying (Media Engineering Web Dev)</title>
     <meta charset='utf-8'>
-    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-webdev/tree/ec66a2fa4a2e1061184cac61437238b8f2743068/subjects/reverse-proxy/README.md&quot;}'>
+    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-webdev/tree/1057f595b28f196067ad4e01f9b4365cd95c5a9b/subjects/reverse-proxy/README.md&quot;}'>
   </head>
   <body>
     <textarea id='source'>
@@ -497,6 +497,21 @@ or you can simply reload the associated systemd service, which will send the sig
 $> sudo systemctl reload nginx
 ```
 
+---
+#### Common nginx directives
+
+.breadcrumbs[<a href="#22">Main context: global nginx options</a>]
+
+Nginx has many [directives][nginx-directives] that can be put in various contexts.
+
+These are the most commonly used ones in the `server` context,
+used to serve websites (static or dynamic):
+
+Directive                           | Example value                  | Description
+:---                                | :---                           | :---
+[`listen`][nginx-directive-listen]  | `80`, `localhost:8000`         | Port (and optional address) on which nginx will listen and accept requests from.
+[`server_name`][nginx-server-names] | `example.com, www.example.com` | The server name is a comma-separated list of domain names. Nginx uses it to determine which `server` block handles client requests, depending on the request's `Host` header.
+
 
 
 
@@ -514,7 +529,7 @@ class: center, middle
 ---
 ### How to use these examples
 
-.breadcrumbs[<a href="#22">Main context: global nginx options</a> > <a href="#26">nginx configuration examples</a>]
+.breadcrumbs[<a href="#22">Main context: global nginx options</a> > <a href="#27">nginx configuration examples</a>]
 
 Each of the following examples can be put in a separate file in the `/etc/nginx/sites-available` directory:
 
@@ -541,7 +556,7 @@ Each of the following examples can be put in a separate file in the `/etc/nginx/
 ---
 ### Static website configuration
 
-.breadcrumbs[<a href="#22">Main context: global nginx options</a> > <a href="#26">nginx configuration examples</a>]
+.breadcrumbs[<a href="#22">Main context: global nginx options</a> > <a href="#27">nginx configuration examples</a>]
 
 This configuration tells nginx to serve the static files in the directory `/home/john_doe/example`
 when a request arrives on port 80 for the domain `example.com`.
@@ -569,7 +584,7 @@ server {
 ---
 ### Reverse proxy configuration
 
-.breadcrumbs[<a href="#22">Main context: global nginx options</a> > <a href="#26">nginx configuration examples</a>]
+.breadcrumbs[<a href="#22">Main context: global nginx options</a> > <a href="#27">nginx configuration examples</a>]
 
 This configuration tells nginx to forward any request on port 80 for the domain `dynamic.example.com`
 to the application or server at address `http://127.0.0.1:3000`,
@@ -594,7 +609,7 @@ server {
 ---
 ### Load balancing configuration
 
-.breadcrumbs[<a href="#22">Main context: global nginx options</a> > <a href="#26">nginx configuration examples</a>]
+.breadcrumbs[<a href="#22">Main context: global nginx options</a> > <a href="#27">nginx configuration examples</a>]
 
 This configuration tells nginx to perform **load balancing** on incoming requests on port 80 for the domain `big.example.com`.
 With the [`upstream` directive][nginx-upstream], it defines a cluster of 4 servers among which to distribute the load.
@@ -630,7 +645,7 @@ server {
 ---
 ## References
 
-.breadcrumbs[<a href="#31">Cluster of applications or servers to handle requests.</a>]
+.breadcrumbs[<a href="#32">Cluster of applications or servers to handle requests.</a>]
 
 * [Proxy server][proxy]
   * [Tunneling proxy][tunneling-proxy]
@@ -651,7 +666,7 @@ server {
 ---
 ## TODO
 
-.breadcrumbs[<a href="#31">Cluster of applications or servers to handle requests.</a>]
+.breadcrumbs[<a href="#32">Cluster of applications or servers to handle requests.</a>]
 
 * cors configuration
 
@@ -670,11 +685,13 @@ server {
 [horizontal-and-vertical-scaling]: https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling
 [load-balancing]: https://en.wikipedia.org/wiki/Load_balancing_(computing)
 [nginx]: http://nginx.org/
+[nginx-directive-listen]: http://nginx.org/en/docs/http/ngx_http_core_module.html#listen
 [nginx-directives]: http://nginx.org/en/docs/dirindex.html
 [nginx-docs]: http://nginx.org/en/docs/
 [nginx-features]: http://nginx.org/en/#basic_http_features
 [nginx-include]: http://nginx.org/en/docs/ngx_core_module.html#include
 [nginx-performance]: https://www.nginx.com/blog/inside-nginx-how-we-designed-for-performance-scale/
+[nginx-server-names]: http://nginx.org/en/docs/http/server_names.html
 [nginx-signals]: http://nginx.org/en/docs/control.html
 [nginx-upstream]: http://nginx.org/en/docs/http/ngx_http_upstream_module.html
 [open-proxy]: https://en.wikipedia.org/wiki/Open_proxy
