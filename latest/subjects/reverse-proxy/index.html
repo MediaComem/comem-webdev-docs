@@ -3,7 +3,7 @@
   <head>
     <title>Reverse Proxying (Media Engineering Web Dev)</title>
     <meta charset='utf-8'>
-    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-webdev/tree/1057f595b28f196067ad4e01f9b4365cd95c5a9b/subjects/reverse-proxy/README.md&quot;}'>
+    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-webdev/tree/110a2ae0110f43a4084d37a9c919d40aa8f893e4/subjects/reverse-proxy/README.md&quot;}'>
   </head>
   <body>
     <textarea id='source'>
@@ -507,10 +507,13 @@ Nginx has many [directives][nginx-directives] that can be put in various context
 These are the most commonly used ones in the `server` context,
 used to serve websites (static or dynamic):
 
-Directive                           | Example value                  | Description
-:---                                | :---                           | :---
-[`listen`][nginx-directive-listen]  | `80`, `localhost:8000`         | Port (and optional address) on which nginx will listen and accept requests from.
-[`server_name`][nginx-server-names] | `example.com, www.example.com` | The server name is a comma-separated list of domain names. Nginx uses it to determine which `server` block handles client requests, depending on the request's `Host` header.
+Directive                              | Example value                              | Description
+:---                                   | :---                                       | :---
+[`listen`][nginx-directive-listen]     | `80`, `localhost:8000`                     | Port (and optional address) on which to listen and accept requests from.
+[`server_name`][nginx-server-names]    | `example.com, www.example.com`             | Comma-separated list of domain names. Determine which `server` block handles client requests.
+[`root`][nginx-directive-root]         | `/home/john_doe/www/site`, `/var/www/site` | The root directory for requests.
+[`index`][nginx-directive-index]       | `index.html`                               | Define files that will be used as an index, i.e. served by default if there is no URL path.
+[`location`][nginx-directive-location] | `/api`, `~* \.jpg$`                        | Vary configuration based on the URL.
 
 
 
@@ -685,7 +688,10 @@ server {
 [horizontal-and-vertical-scaling]: https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling
 [load-balancing]: https://en.wikipedia.org/wiki/Load_balancing_(computing)
 [nginx]: http://nginx.org/
+[nginx-directive-index]: http://nginx.org/en/docs/http/ngx_http_index_module.html#index
 [nginx-directive-listen]: http://nginx.org/en/docs/http/ngx_http_core_module.html#listen
+[nginx-directive-location]: http://nginx.org/en/docs/http/ngx_http_core_module.html#location
+[nginx-directive-root]: http://nginx.org/en/docs/http/ngx_http_core_module.html#root
 [nginx-directives]: http://nginx.org/en/docs/dirindex.html
 [nginx-docs]: http://nginx.org/en/docs/
 [nginx-features]: http://nginx.org/en/#basic_http_features
