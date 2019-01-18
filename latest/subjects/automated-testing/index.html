@@ -3,7 +3,7 @@
   <head>
     <title>Automated Testing (Media Engineering Web Dev)</title>
     <meta charset='utf-8'>
-    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-webdev/tree/7952ac1b115051dd770a1e4a832e5c614a2c3f2e/subjects/automated-testing/README.md&quot;}'>
+    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-webdev/tree/2025a835bb178be575daa60a10e2088e262d2a1f/subjects/automated-testing/README.md&quot;}'>
   </head>
   <body>
     <textarea id='source'>
@@ -918,13 +918,16 @@ $> npm install --save-dev supertest
 Here's an example of how to write a test with SuperTest:
 
 ```js
+const { expect } = require('chai');
+const supertest = require('supertest');
+
 describe('Some API', function() {
   it('should do something', async function() {
 
     const response = await supertest('http://www.google.com').get('/');
 
     expect(response.status).to.equal(200);
-    expect(response.body).to.have.string('Google');
+    expect(response.text).to.have.string('Google');
   });
 });
 ```
