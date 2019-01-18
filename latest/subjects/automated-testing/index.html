@@ -3,7 +3,7 @@
   <head>
     <title>Automated Testing (Media Engineering Web Dev)</title>
     <meta charset='utf-8'>
-    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-webdev/tree/f7db49e2b1c809bd4fe5a3c8f17e05b15c52f6f4/subjects/automated-testing/README.md&quot;}'>
+    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-webdev/tree/7952ac1b115051dd770a1e4a832e5c614a2c3f2e/subjects/automated-testing/README.md&quot;}'>
   </head>
   <body>
     <textarea id='source'>
@@ -937,6 +937,111 @@ Write at least two tests for the greeter API:
 
 
 ---
+## End-to-end tests
+
+.breadcrumbs[<a href="#1">Automated Testing</a>]
+
+End-to-end tests, or [Graphical User Interface (GUI) tests][gui-testing] are automated tests
+focused on testing the whole system from the user perspective.
+
+For example, testing tools like [Selenium WebDriver][selenium-webdriver] allow you to control
+a browser and simulate a user by navigating to web pages, filling forms, clicking buttons, etc.
+
+---
+### Install Selenium WebDriver
+
+.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#46">End-to-end tests</a>]
+
+Run the following command in the project's directory to install Selenium WebDriver:
+
+```bash
+$> npm install --save-dev selenium-webdriver
+```
+
+> Also follow the additional [installation instructions][selenium-webdriver-install] for your operating system if applicable.
+> For example for Google Chrome on Windows, you must download the Chrome driver to a directory,
+> and put that directory into your [system's `PATH` environment variable][windows-path].
+
+---
+### Create a file for your end-to-end test
+
+.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#46">End-to-end tests</a>]
+
+Save the following contents to a file named `tests/e2e.test.js`:
+
+```js
+const webdriver = require('selenium-webdriver');
+const { By } = require('selenium-webdriver');
+const port = process.env.PORT || 3000;
+const baseUrl = process.env.BASE_URL || \`http://localhost:${port}`;
+
+describe('Greeter web page', function() {
+  this.timeout(10000);
+
+  let driver;
+
+  beforeEach(async function() {
+    driver = await new webdriver.Builder()
+      .forBrowser('chrome')
+      .build();
+  });
+
+  afterEach(async function() {
+    await driver.quit();
+  });
+
+  it('should produce a complex greeting', async function() {
+    await driver.get(baseUrl);
+  });
+});
+```
+
+---
+#### Run your end-to-end test
+
+.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#46">End-to-end tests</a> > <a href="#48">Create a file for your end-to-end test</a>]
+
+Make sure you have a terminal open with the `npm run dev` command running,
+and the application available at http://localhost:3000 before the next step.
+
+Run the tests again with `npm run mocha`
+Mocha should execute the new test case, open your browser, display the page, and immediately close the browser.
+
+---
+### Implement the end-to-end test
+
+.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#46">End-to-end tests</a>]
+
+Add the following content to your test after the `driver.get` call, and run the tests again:
+
+```js
+const salutationSelect = await driver.findElement(By.name('salutation'));
+await salutationSelect.sendKeys('Pirate');
+
+const randomInput = await driver.findElement(By.name('random'));
+await randomInput.click();
+
+const nameInput = await driver.findElement(By.name('name'));
+await nameInput.clear();
+await nameInput.sendKeys('webdriver');
+
+const excitementInput = await driver.findElement(By.name('excitement'));
+await excitementInput.clear();
+await excitementInput.sendKeys('2');
+
+const loudCheckbox = await driver.findElement(By.name('loud'));
+await loudCheckbox.click();
+
+await driver.wait(async function() { // Wait until the title is correct
+  const title = await driver.findElement(By.css('h1.jumbotron-heading'));
+  const text = await title.getText(); // Retrieve the title's text
+  return text === 'AHOY WEBDRIVER!!'; // Check its expected value
+});
+```
+
+
+
+---
 class: center, middle
 ## Test-Driven Development (TDD)
 
@@ -949,7 +1054,7 @@ class: center, middle
 ---
 ### What is test-driven development?
 
-.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#46">Test-Driven Development (TDD)</a>]
+.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#51">Test-Driven Development (TDD)</a>]
 
 As the name implies, [test-driven development][tdd] is **driven by tests**.
 
@@ -971,7 +1076,7 @@ your features up front to write the tests, before even starting to write one lin
 ---
 ### Apply TDD
 
-.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#46">Test-Driven Development (TDD)</a>]
+.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#51">Test-Driven Development (TDD)</a>]
 
 You will add a new feature: the `Greeter` class should have a customizable separator.
 For example, if you set the separator to `, ` (a comma and a space),
@@ -999,7 +1104,7 @@ This theoretically allows more business-oriented project members to participate 
 ---
 ### Cucumber & Gherkin
 
-.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#49">Behavior-Driven Development (BDD)</a>]
+.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#54">Behavior-Driven Development (BDD)</a>]
 
 You will use [Cucumber][cucumber], a very popular BDD test framework and runner.
 
@@ -1024,7 +1129,7 @@ Feature: Guess the word
 ---
 ### Install Cucumber
 
-.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#49">Behavior-Driven Development (BDD)</a>]
+.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#54">Behavior-Driven Development (BDD)</a>]
 
 Run the following command in the project's directory to install Cucumber:
 
@@ -1050,7 +1155,7 @@ You should now be able to run Cucumber by typing `npm run cucumber`.
 ---
 ### Implement a Cucumber feature test
 
-.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#49">Behavior-Driven Development (BDD)</a>]
+.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#54">Behavior-Driven Development (BDD)</a>]
 
 Creates a `features` directory and save the following contents to a file named `features/greeter.feature`:
 
@@ -1156,6 +1261,7 @@ Use the [Cucumber JS documentation][cucumber-js].
 [ruby-test-unit]: https://test-unit.github.io
 [soapui]: https://www.soapui.org
 [selenium-webdriver]: https://www.seleniumhq.org/projects/webdriver/
+[selenium-webdriver-install]: https://www.npmjs.com/package/selenium-webdriver#installation
 [shouldjs]: http://shouldjs.github.io
 [sinon]: https://sinonjs.org
 [supertest]: https://github.com/visionmedia/supertest
@@ -1165,6 +1271,7 @@ Use the [Cucumber JS documentation][cucumber-js].
 [testdoublejs]: https://github.com/testdouble/testdouble.js/
 [unit-testing]: https://en.wikipedia.org/wiki/Unit_testing
 [vscode]: https://code.visualstudio.com
+[windows-path]: https://www.computerhope.com/issues/ch000549.htm
 
     </textarea>
     <script src='https://embed.runkit.com'></script>
