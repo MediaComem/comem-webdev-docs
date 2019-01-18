@@ -3,7 +3,7 @@
   <head>
     <title>Automated Testing (Media Engineering Web Dev)</title>
     <meta charset='utf-8'>
-    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-webdev/tree/36ef07f699c645396a614ffe9c9ed6831d7c5839/subjects/automated-testing/README.md&quot;}'>
+    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-webdev/tree/6b65228b02271d9e84dc200e16c6ed7c3c4557d9/subjects/automated-testing/README.md&quot;}'>
   </head>
   <body>
     <textarea id='source'>
@@ -915,11 +915,24 @@ $> npm install --save-dev supertest
 
 .breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#42">API tests</a>]
 
-TODO:
+Here's an example of how to write a test with SuperTest:
 
-* example
-* async/await
-* write 2 tests
+```js
+describe('Some API', function() {
+  it('should do something', async function() {
+
+    const response = await supertest('http://www.google.com').get('/');
+
+    expect(response.status).to.equal(200);
+    expect(response.body).to.have.string('Google');
+  });
+});
+```
+
+Write at least two tests for the greeter API:
+
+* Test that simply calling the URL returns a default greeting.
+* Test a more complex greeting by sending URL query parameters.
 
 
 
