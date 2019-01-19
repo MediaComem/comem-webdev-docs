@@ -3,7 +3,7 @@
   <head>
     <title>Automated Testing (Media Engineering Web Dev)</title>
     <meta charset='utf-8'>
-    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-webdev/tree/2025a835bb178be575daa60a10e2088e262d2a1f/subjects/automated-testing/README.md&quot;}'>
+    <meta name='config' content='{&quot;basePath&quot;:&quot;../..&quot;,&quot;remark&quot;:{&quot;highlightLines&quot;:true,&quot;highlightSpans&quot;:true,&quot;countIncrementalSlides&quot;:false},&quot;subjectUrl&quot;:&quot;https://github.com/MediaComem/comem-webdev/tree/f02a49d5a9cec239f3b18858d2c76589c6d5b38b/subjects/automated-testing/README.md&quot;}'>
   </head>
   <body>
     <textarea id='source'>
@@ -337,7 +337,7 @@ What you just pasted is a PHPUnit **test suite** composed of one **test case**:
 * It has methods with names that begin with `test`.
   Those are what PHPUnit will execute when running the file.
 
-<p class='center'><img class='w80' src='images/test-runner.jpg' /></p>
+<p class='center'><img class='w80' src='images/unit-test-exec.jpg' /></p>
 
 ---
 #### Run your first test
@@ -526,7 +526,7 @@ $> npm install --save-dev mocha
 Create a `tests` directory and save the following contents into a file named `tests/code.test.js`:
 
 ```js
-describe('Something', function() {
+describe('Subject', function() {
   it('should do something', function() {
   });
 
@@ -553,7 +553,7 @@ Run the following command to execute all files with names ending with `.test.js`
 ```bash
 $> ./node_modules/mocha/bin/mocha 'tests/**/*.test.js'
 
-  Greeter
+  Subject
     ✓ should test something
     ✓ should test something else
 
@@ -562,6 +562,36 @@ $> ./node_modules/mocha/bin/mocha 'tests/**/*.test.js'
 
 As you can see, Mocha read your test cases and executed the two functions passed to `it`.
 Mocha considers a test successful if it does nothing.
+
+---
+##### Mocha test structure
+
+.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#10">What is a unit test?</a> > <a href="#23">Write JavaScript unit tests</a> > <a href="#26">Running Mocha tests</a>]
+
+The calls to `describe` and `it` form a structure.
+In this example, the two `it` functions are within the `describe` function:
+
+```js
+describe('`Subject`', function() {
+  it('`should do something`', function() {
+  });
+
+  it('`should do something else`', function() {
+  });
+});
+```
+
+This structure is reflected in the output:
+
+```bash
+$> ./node_modules/mocha/bin/mocha 'tests/**/*.test.js'
+
+  `Subject`
+    ✓ `should test something`
+    ✓ `should test something else`
+
+  2 passing (6ms)
+```
 
 ---
 ##### Add a shortcut npm script for Mocha
@@ -575,7 +605,7 @@ you can add the following line in the `package.json` file:
   ...
   "scripts": {
     "dev": "cross-env DEBUG=greeter:* nodemon ./bin/www",
-    `"mocha": "mocha 'tests/**/*.test.js'",`
+    `"mocha": "mocha tests/**/*.test.js",`
     "start": "node ./bin/www"
   }
   ...
@@ -584,7 +614,7 @@ you can add the following line in the `package.json` file:
 This defines an [npm script][npm-scripts] that allows you to run the command by simply typing `npm run mocha`:
 
 ```bash
-$> npm run mocha
+$> `npm run mocha`
 
   Greeter
     ✓ should test something
@@ -678,7 +708,7 @@ Write a unit test for it.
 ---
 #### Not a unit test
 
-.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#10">What is a unit test?</a> > <a href="#31">Mocking</a>]
+.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#10">What is a unit test?</a> > <a href="#32">Mocking</a>]
 
 You might have written something similar to this:
 
@@ -710,7 +740,7 @@ i.e. a test on multiple components working together.
 ---
 #### Can I still make it a unit test?
 
-.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#10">What is a unit test?</a> > <a href="#31">Mocking</a>]
+.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#10">What is a unit test?</a> > <a href="#32">Mocking</a>]
 
 What if you wanted to test `LoudDecorator` alone?
 
@@ -724,7 +754,7 @@ To take a real metaphor, car designers use a crash test dummy to simulate the dy
 ---
 #### Install a mocking library
 
-.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#10">What is a unit test?</a> > <a href="#31">Mocking</a>]
+.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#10">What is a unit test?</a> > <a href="#32">Mocking</a>]
 
 Much like with assertions, Mocha does not provide any mocking functionality by default.
 
@@ -746,7 +776,7 @@ const { fake } = require('sinon');
 ---
 #### How do I create a mock object?
 
-.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#10">What is a unit test?</a> > <a href="#31">Mocking</a>]
+.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#10">What is a unit test?</a> > <a href="#32">Mocking</a>]
 
 Sinon has a `fake` method that can be used to easily create customizable fake functions:
 
@@ -769,13 +799,34 @@ Armed with your new mocking knowledge, write a better test for `LoudDecorator`,
 one that **does not use the `Greeter` class**, but creates a mock greeter object instead.
 
 ---
-#### Why use mocks?
+#### Mocking example
 
-.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#10">What is a unit test?</a> > <a href="#31">Mocking</a>]
+.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#10">What is a unit test?</a> > <a href="#32">Mocking</a>]
+
+Here's the same test as before but with a mock object instead of the real greeter object:
+
+```js
+it('should make a greeting louder', function() {
+
+  const mockGreeter = {
+    toString: fake.returns('Hello')
+  };
+
+  const decorator = new LoudDecorator(mockGreeter);
+  decorator.setLoud();
+
+  expect(decorator.toString()).to.equal('HELLO');
+});
+```
 
 By mocking the dependencies of `LoudDecorator`,
 you are writing a **true unit test** since you are only testing `LoudDecorator` itself.
 If the dependency is complex, that is probably a good thing.
+
+---
+#### Why use mocks?
+
+.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#10">What is a unit test?</a> > <a href="#32">Mocking</a>]
 
 If an object has any of the following characteristics, it may be useful to use a mock object in its place:
 
@@ -811,7 +862,7 @@ Unit tests provide a sort of **living documentation** of the system.
 ---
 #### Disadvantages of unit tests
 
-.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#10">What is a unit test?</a> > <a href="#37">Why write unit tests?</a>]
+.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#10">What is a unit test?</a> > <a href="#39">Why write unit tests?</a>]
 
 Unit tests **will not catch every error in the program**, because they cannot evaluate every execution path in any but the most trivial programs.
 They will not catch integration errors or broader system-level errors.
@@ -833,13 +884,15 @@ and ensure that failures are reviewed and addressed immediately.
 When doing integration tests, individual software **units are combined and tested as a group**.
 This **ensures that components work well together**, not only individually as tested by unit tests.
 
+<p class='center'><img class='w70' src='images/integration-test-exec.jpg' /></p>
+
 The tools used to write integration tests are often the same as for unit tests,
 so you do not need to install any new library.
 
 ---
 ### Write some integration tests
 
-.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#39">Integration tests</a>]
+.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#41">Integration tests</a>]
 
 Go back to the sample PHP project and write an integration test for the `countBytes` and `formatBytes` function working together,
 similarly to how they are used [in the `file-stats.php` script][php-sample-integration].
@@ -850,7 +903,7 @@ similarly to how they are used [in the `buildGreeting` function][js-sample-build
 ---
 ### Advantages and disadvantages of integration testing
 
-.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#39">Integration tests</a>]
+.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#41">Integration tests</a>]
 
 **Advantages**
 
@@ -875,31 +928,47 @@ similarly to how they are used [in the `buildGreeting` function][js-sample-build
 Specifically, it involves **testing application programming interfaces (APIs)** directly
 to **determine if they meet expectations** for functionality, reliability, performance and security.
 
-API testing is considered critical for automating testing because APIs now serve as the primary interface to application logic
-and because GUI tests are difficult to maintain with the short release cycles and frequent changes commonly used with Agile software development.
+For example, your application may provide a [RESTful][rest] API or an [RPC][rpc] API accessible over the Internet.
+Automated tests can make HTTP calls to these APIs and compared actual outcomes with expected outcomes.
+
+> API tests are a type of integration test since they test all components of your API working together.
+
+---
+### Benefits of API tests
+
+.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#44">API tests</a>]
+
+API testing is considered critical for automating testing
+because APIs now serve as the primary interface to application logic.
+Higher level end-to-end tests are also more difficult to maintain
+with the short release cycles and frequent changes commonly used with iterative software development.
+
+<p class='center'><img class='w80' src='images/api-test-exec.jpg' /></p>
 
 ---
 ### Testing a web API
 
-.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#42">API tests</a>]
+.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#44">API tests</a>]
 
-The sample JavaScript project provides a web API.
-
+The sample JavaScript project you used to write JavaScript unit tests also provides a web API.
 Make sure you have it available on http://localhost:3000 by running `npm run dev` in the project's directory.
 
 You should be able to access the web API with this URL: http://localhost:3000/greeter?excitement=1&loud=&name=Bob&salutation=Hello
 
 It should return a [JSON][json] response with the text "Hello Bob!".
 
+You can write tests that do the same and assert that the response is as expected.
+
 ---
 ### Install an API test library
 
-.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#42">API tests</a>]
+.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#44">API tests</a>]
 
-Mocha does not provide any API testing functionality,
+Mocha does not provide any API testing functionality out of the box,
 but there are many tools that can help you do this such as [REST-assured][rest-assured], [SoapUI][soapui] or [SuperTest][supertest].
 
 You will use SuperTest, a JavaScript API testing library, in this tutorial.
+It has a nice syntax to easily make HTTP requests to your API.
 
 Install it by running the following command in the project's directory:
 
@@ -913,7 +982,7 @@ $> npm install --save-dev supertest
 ---
 ### Using SuperTest
 
-.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#42">API tests</a>]
+.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#44">API tests</a>]
 
 Here's an example of how to write a test with SuperTest:
 
@@ -921,21 +990,37 @@ Here's an example of how to write a test with SuperTest:
 const { expect } = require('chai');
 const supertest = require('supertest');
 
-describe('Some API', function() {
-  it('should do something', async function() {
+describe('Google', function() {
+  it('should display its home page', async function() {
 
+    // Make a GET request on www.google.com
     const response = await supertest('http://www.google.com').get('/');
 
+    // Assert that the response status code is 200 OK
     expect(response.status).to.equal(200);
+
+    // Assert that the response contains the text "Google"
     expect(response.text).to.have.string('Google');
   });
 });
 ```
 
+This test retrieves the Google home page and makes two assertions,
+one on the status code of the response, and one on the body.
+
+You can save this test to a new file named `tests/api.test.js` and run `npm run mocha` again to execute it.
+
+---
+### Write API tests
+
+.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#44">API tests</a>]
+
 Write at least two tests for the greeter API:
 
-* Test that simply calling the URL returns a default greeting.
-* Test a more complex greeting by sending URL query parameters.
+* Test that simply calling the `/greeter` API without any parameters returns a default greeting.
+* Test that a more complex greeting is created by sending URL query parameters (like `name` or `excitement`).
+
+> Read the [Chai API][chai-assertions] to see what kind of assertions might be useful for these tests.
 
 
 
@@ -947,13 +1032,15 @@ Write at least two tests for the greeter API:
 End-to-end tests, or [Graphical User Interface (GUI) tests][gui-testing] are automated tests
 focused on testing the whole system from the user perspective.
 
+<p class='center'><img class='w70' src='images/e2e-test-exec.jpg' /></p>
+
 For example, testing tools like [Selenium WebDriver][selenium-webdriver] allow you to control
 a browser and simulate a user by navigating to web pages, filling forms, clicking buttons, etc.
 
 ---
 ### Install Selenium WebDriver
 
-.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#46">End-to-end tests</a>]
+.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#50">End-to-end tests</a>]
 
 Run the following command in the project's directory to install Selenium WebDriver:
 
@@ -961,14 +1048,24 @@ Run the following command in the project's directory to install Selenium WebDriv
 $> npm install --save-dev selenium-webdriver
 ```
 
-> Also follow the additional [installation instructions][selenium-webdriver-install] for your operating system if applicable.
-> For example for Google Chrome on Windows, you must download the Chrome driver to a directory,
-> and put that directory into your [system's `PATH` environment variable][windows-path].
+Also follow the additional [installation instructions][selenium-webdriver-install] for your operating system if applicable.
+For example for Google Chrome, you may need to download the Chrome driver to a directory,
+and put that directory into your `PATH`.
+
+> To add a directory to the `PATH` on Windows,
+> modify your [system's `Path` environment variable][windows-path].
+> Double-click on the `Path` variable and add the full path to the directory as a new entry.
+
+> To add a directory to the `PATH` on Linux or macOS,
+> save the following command to your `.bash_profile` file,
+> then restart your terminal:
+>
+>     export PATH=$PATH:/path/to/directory
 
 ---
 ### Create a file for your end-to-end test
 
-.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#46">End-to-end tests</a>]
+.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#50">End-to-end tests</a>]
 
 Save the following contents to a file named `tests/e2e.test.js`:
 
@@ -985,7 +1082,7 @@ describe('Greeter web page', function() {
 
   beforeEach(async function() {
     driver = await new webdriver.Builder()
-      .forBrowser('chrome')
+      .forBrowser('chrome') // Change to your browser if required
       .build();
   });
 
@@ -1002,44 +1099,78 @@ describe('Greeter web page', function() {
 ---
 #### Run your end-to-end test
 
-.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#46">End-to-end tests</a> > <a href="#48">Create a file for your end-to-end test</a>]
+.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#50">End-to-end tests</a> > <a href="#52">Create a file for your end-to-end test</a>]
 
 Make sure you have a terminal open with the `npm run dev` command running,
 and the application available at http://localhost:3000 before the next step.
 
 Run the tests again with `npm run mocha`
-Mocha should execute the new test case, open your browser, display the page, and immediately close the browser.
+Mocha should execute the new test case, open your browser,
+display the page, and immediately close the browser.
+
+---
+### Selenium WebDriver API
+
+.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#50">End-to-end tests</a>]
+
+Selenium offers various features to inspect and manipulate web pages.
+
+For example, you can retrieve a DOM element by its `name` attribute,
+which is useful for finding a form field:
+
+```js
+const nameInputField = await driver.findElement(By.name('name'));
+```
+
+You can then type into that field by using the field's `sendKeys` method:
+
+```js
+await nameInputField.sendKeys('Bob');
+```
+
+Or if the element is a checkbox, you could click on it with the `click` method:
+
+```js
+const checkbox = await driver.findElement(By.name('enabled'));
+await checkbox.click();
+```
+
+Read the [Selenium WebDriver API][selenium-webdriver-api] for information on other methods at your disposal.
+For example, the `findElement` method returns [`WebElement`][selenium-webdriver-api-web-element] instances.
 
 ---
 ### Implement the end-to-end test
 
-.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#46">End-to-end tests</a>]
+.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#50">End-to-end tests</a>]
 
-Add the following content to your test after the `driver.get` call, and run the tests again:
+Here's a working test for the Greeter API.
+This code goes into the `should produce a complex greeting` test
+below the `driver.get` call:
 
 ```js
-const salutationSelect = await driver.findElement(By.name('salutation'));
-await salutationSelect.sendKeys('Pirate');
-
+// Click the random checkbox
 const randomInput = await driver.findElement(By.name('random'));
 await randomInput.click();
-
+// Fill the name field
 const nameInput = await driver.findElement(By.name('name'));
 await nameInput.clear();
 await nameInput.sendKeys('webdriver');
-
+// Fill the excitement field
 const excitementInput = await driver.findElement(By.name('excitement'));
 await excitementInput.clear();
 await excitementInput.sendKeys('2');
-
+// Click the loud checkbox
 const loudCheckbox = await driver.findElement(By.name('loud'));
 await loudCheckbox.click();
 
-await driver.wait(async function() { // Wait until the title is correct
+// Wait until the correct greeting is displayed in the title
+await driver.wait(async function() {
   const title = await driver.findElement(By.css('h1.jumbotron-heading'));
-  const text = await title.getText(); // Retrieve the title's text
-  return text === 'AHOY WEBDRIVER!!'; // Check its expected value
+  const text = await title.getText();
+  return text === 'HELLO WEBDRIVER!!'; // Check its expected value
 });
+
+await new Promise(resolve => setTimeout(resolve, 1000));
 ```
 
 
@@ -1057,7 +1188,7 @@ class: center, middle
 ---
 ### What is test-driven development?
 
-.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#51">Test-Driven Development (TDD)</a>]
+.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#56">Test-Driven Development (TDD)</a>]
 
 As the name implies, [test-driven development][tdd] is **driven by tests**.
 
@@ -1068,7 +1199,7 @@ instead of developing your code first, then writing your tests, you use this pro
 2. **Write a test for the feature first.**
 
    > The test will fail at first, since the feature does not exist yet.
-3. **Then,** implement the feature.
+3. **Then,** implement the feature by writing the necessary code.
 
    > Until the test succeeds.
 4. Finally, refactor your code to improve it if necessary.
@@ -1079,15 +1210,188 @@ your features up front to write the tests, before even starting to write one lin
 ---
 ### Apply TDD
 
-.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#51">Test-Driven Development (TDD)</a>]
+.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#56">Test-Driven Development (TDD)</a>]
 
 You will add a new feature: the `Greeter` class should have a customizable separator.
-For example, if you set the separator to `, ` (a comma and a space),
-a simple greeter with its name set to `Bob` and its salutation set to `Hi` should produce `Hi, Bob` instead of `Hi Bob`.
 
-* **Write the test for this feature first.**
-  Make sure you can run it and see it fail.
-* Then implement the required code until the test passes.
+For example, if you set the separator to a comma and a space,
+a greeter with its name set to `Bob` and its salutation set to `Hi` should produce `Hi, Bob` instead of `Hi Bob`.
+The end result should work like this:
+
+```js
+const greeter = new Greeter();
+greeter.setName('Bob');
+greeter.setSalutation('Hi');
+greeter.setSeparator(', ');
+
+console.log(greeter.toString()); // "Hi, Bob"
+```
+
+---
+#### Write the test first
+
+.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#56">Test-Driven Development (TDD)</a> > <a href="#58">Apply TDD</a>]
+
+**Write the test for this new feature first.**
+
+Your test should call `setSeparator` and make an assertion that the result should be "Hi, Bob":
+
+```js
+it.only('should produce a greeting with a separator', function() {
+
+  const greeter = new Greeter();
+  greeter.setName('Bob');
+  greeter.setSalutation('Hi');
+  greeter.setSeparator(', ');
+
+  expect(greeter.toString()).to.equal('Hi, Bob');
+});
+```
+
+> Note the `.only` after `it`.
+> This makes Mocha execute only that test for now.
+> You will remove it later when you are done implementing the feature.
+
+---
+#### Make sure the test fails
+
+.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#56">Test-Driven Development (TDD)</a> > <a href="#58">Apply TDD</a>]
+
+When you run this new test, it should fail, since you have not implemented the `setSeparator` method yet:
+
+```bash
+$> npm run mocha
+
+  Greeter
+    1) should produce a greeting with a separator
+
+  0 passing (10ms)
+  1 failing
+
+  1) Greeter
+       should produce a greeting with a separator:
+     TypeError: greeter.setSeparator is not a function
+      at Context.<anonymous> (tests/code.test.js:11:13)
+```
+
+---
+#### Implement the feature
+
+.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#56">Test-Driven Development (TDD)</a> > <a href="#58">Apply TDD</a>]
+
+Add the following getter and setter to the `Greeter` class:
+
+```js
+getSeparator() {
+  return this.separator;
+}
+
+setSeparator(separator) {
+  this.separator = separator;
+}
+```
+
+Then modify the last line in the `toString` method to this:
+
+```js
+return \`${this.getSalutation()}${this.getSeparator()}${this.getName()}`;
+```
+
+---
+#### Make sure the test passes
+
+.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#56">Test-Driven Development (TDD)</a> > <a href="#58">Apply TDD</a>]
+
+Now that you have implemented the feature, the test should pass:
+
+```bash
+$> npm run mocha
+
+Greeter
+    ✓ should produce a greeting with a separator
+
+  1 passing (7ms)
+```
+
+You have implemented your first feature using test-driven development:
+
+* You implemented a failing test first.
+* Then you implemented the feature to make the test pass.
+
+---
+### Enable the rest of the tests again
+
+.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#56">Test-Driven Development (TDD)</a>]
+
+Remove the `.only` from your test.
+If you run the tests with `npm run mocha` again,
+you will probably see some tests failing:
+
+```
+2 passing (12s)
+5 failing
+```
+
+You should see errors similar to this:
+
+```
+1) Greeter API
+     should produce a simple greeting:
+
+    AssertionError: expected { greeting: 'HelloundefinedWorld' }
+      to deeply equal { greeting: 'Hello World' }
+
+    + expected - actual
+
+     {
+    -  "greeting": "HelloundefinedWorld"
+    +  "greeting": "Hello World"
+     }
+
+    at Context.<anonymous> (tests/api.test.js:17:35)
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+```
+
+---
+### Why write automated tests?
+
+.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#56">Test-Driven Development (TDD)</a>]
+
+Thanks to the tests you wrote earlier,
+you can easily identify that after implementing this latest separator feature,
+you have introduced a **change in behavior**.
+
+This is also called a **regression**,
+because things that previously worked do not work anymore.
+In other words, you have introduced a bug.
+
+---
+#### Fix the bug and run the tests again
+
+.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#56">Test-Driven Development (TDD)</a> > <a href="#64">Why write automated tests?</a>]
+
+You can easily fix the issue by modifying the constructor of the `Greeter` class as follows:
+
+```js
+constructor() {
+  this.separator = ' ';
+}
+```
+
+Now that you have done so,
+your automated test suite allows you to quickly check
+that everything works as it did before:
+
+```bash
+$> npm run mocha
+
+  Greeter API
+    ✓ should produce a simple greeting (40ms)
+    ✓ should produce a complex greeting
+  ...
+
+  7 passing (4s)
+```
 
 
 
@@ -1107,11 +1411,13 @@ This theoretically allows more business-oriented project members to participate 
 ---
 ### Cucumber & Gherkin
 
-.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#54">Behavior-Driven Development (BDD)</a>]
+.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#66">Behavior-Driven Development (BDD)</a>]
 
 You will use [Cucumber][cucumber], a very popular BDD test framework and runner.
+It has a [JavaScript implementation][cucumber-js].
 
-It uses [Gherkin][gherkin], a language that allows you to define business requirements with
+Cucumber uses [Gherkin][gherkin],
+a language that allows you to define business requirements with
 a simple structure sentence using the keywords `Given`, `Then` and `When`:
 
 ```
@@ -1132,7 +1438,7 @@ Feature: Guess the word
 ---
 ### Install Cucumber
 
-.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#54">Behavior-Driven Development (BDD)</a>]
+.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#66">Behavior-Driven Development (BDD)</a>]
 
 Run the following command in the project's directory to install Cucumber:
 
@@ -1156,9 +1462,9 @@ Add the following line to your `package.json` file to facilitate running the `cu
 You should now be able to run Cucumber by typing `npm run cucumber`.
 
 ---
-### Implement a Cucumber feature test
+### Add a Cucumber feature test
 
-.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#54">Behavior-Driven Development (BDD)</a>]
+.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#66">Behavior-Driven Development (BDD)</a>]
 
 Creates a `features` directory and save the following contents to a file named `features/greeter.feature`:
 
@@ -1175,10 +1481,225 @@ Feature: Greeter
     Then the greeting should be "Hi Bob"
 ```
 
-Create the necessary support files so that you can execute this feature with Cucumber.
-You will need to define a World, and the various Steps.
+---
+#### Run a feature test
 
-Use the [Cucumber JS documentation][cucumber-js].
+.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#66">Behavior-Driven Development (BDD)</a> > <a href="#69">Add a Cucumber feature test</a>]
+
+If you execute `npm run cucumber`,
+you should see that Cucumber will read the feature file you created,
+parse the Gherkin language, and execute the `Given`, `When` and `Then` steps one by one.
+
+```
+Feature: Greeter
+
+  Scenario: simple greeting
+    Given I am named "Bob"
+    ? undefined
+    And I want to be saluted with "Hi"
+    ? undefined
+    When I am greeted
+    ? undefined
+    Then the greeting should be "Hi Bob"
+    ? undefined
+```
+
+---
+#### Unimplemented steps
+
+.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#66">Behavior-Driven Development (BDD)</a> > <a href="#69">Add a Cucumber feature test</a>]
+
+Cucumber will also warn you that these `Given`, `When` and `Then` steps are not implemented:
+
+```Warnings:
+1) Scenario: simple greeting # features/greeter.feature:6
+   ? Given I am named "Bob"
+       Undefined. Implement with the following snippet:
+
+         Given('I am named {string}', function (string) {
+           // Write code here that turns the phrase above into concrete actions
+           return 'pending';
+         });
+...
+```
+
+This is to be expected.
+Cucumber cannot magically determine what you mean by `Given that I am named "Bob"`.
+
+It is your job to tell Cucumber how to interpret these steps by writing the corresponding code.
+You will need to set up the necessary support files in a new `features/support` directory.
+
+---
+### The Cucumber world
+
+.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#66">Behavior-Driven Development (BDD)</a>]
+
+Cucumber runs scenarios in a [World][cucumber-world].
+The world is simply a JavaScript object which is the context in which
+Cucumber steps will be executed.
+In other words, the world will be available as `this` in the steps' implementation.
+
+Create a world by saving the following contents to a file named `features/support/world.js`:
+
+```js
+const { setWorldConstructor } = require('cucumber')
+
+const Greeter = require('../../lib/greeter');
+
+class GreeterWorld {
+  constructor() {
+    this.greeter = new Greeter();
+  }
+}
+
+setWorldConstructor(GreeterWorld);
+```
+
+This world defines a `this.greeter` variable which you will use when next implementing the steps.
+
+---
+### Cucumber steps
+
+.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#66">Behavior-Driven Development (BDD)</a>]
+
+Cucumber suggests how you may implement the steps in the warnings it prints:
+
+```js
+Given('I am named {string}', function(string) {
+  // Write code here that turns the phrase above into concrete actions
+  return 'pending';
+});
+```
+
+This code should go into a new file named `features/support/steps.js`.
+Create this file now with these lines at the top:
+
+```js
+const { expect } = require('chai')
+const { Given, When, Then } = require('cucumber')
+```
+
+---
+#### Implement a step
+
+.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#66">Behavior-Driven Development (BDD)</a> > <a href="#73">Cucumber steps</a>]
+
+Do as instructed by the warning and implement the required code.
+
+For the first `Given I am named {string}` step,
+you want to set the greeter's name.
+You might remember that you just defined `this.greeter` in the Cucumber world,
+so you can use it in this step:
+
+```js
+Given('I am named {string}', function(name) {
+  this.greeter.setName(name);
+});
+```
+
+Do the same for the salutation step:
+
+```js
+Given('I want to be saluted with {string}', function(salutation) {
+  this.greeter.setSalutation(salutation);
+});
+```
+
+These are the **setup** steps of this scenario.
+
+---
+#### Implement the remaining steps
+
+.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#66">Behavior-Driven Development (BDD)</a> > <a href="#73">Cucumber steps</a>]
+
+The `When I am greeted` step is the **action** in this scenario.
+It should create the greeting and store the result in a variable
+so that you can run assertions on it later:
+
+```js
+When('I am greeted', function() {
+  this.greeting = this.greeter.toString();
+});
+```
+
+The `Then the greeting should be "..."` step is the **assertion** in this scenario.
+In it, you should assert that the actual greeting matches the expected one:
+
+```js
+Then('the greeting should be {string}', function(greeting) {
+  expect(this.greeting).to.equal(greeting);
+});
+```
+
+---
+#### All the steps
+
+.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#66">Behavior-Driven Development (BDD)</a> > <a href="#73">Cucumber steps</a>]
+
+The final `steps.js` file should look like this:
+
+```js
+const { expect } = require('chai')
+const { Given, When, Then } = require('cucumber')
+
+Given('I am named {string}', function(name) {
+  this.greeter.setName(name);
+});
+
+Given('I want to be saluted with {string}', function(salutation) {
+  this.greeter.setSalutation(salutation);
+});
+
+When('I am greeted', function() {
+  this.greeting = this.greeter.toString();
+});
+
+Then('the greeting should be {string}', function(greeting) {
+  expect(this.greeting).to.equal(greeting);
+});
+```
+
+---
+### Run the full Cucumber feature
+
+.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#66">Behavior-Driven Development (BDD)</a>]
+
+Armed with your world and steps,
+you can now run the fully functional Cucumber scenario:
+
+```bash
+$> npm run cucumber
+
+Feature: Greeter
+
+  Scenario: simple greeting
+    Given I am named "Bob"
+    And I want to be saluted with "Hi"
+    When I am greeted
+    Then the greeting should be "Hi Bob"
+
+1 scenario (1 passed)
+4 steps (4 passed)
+0m00.004s
+```
+
+---
+### Why use Cucumber?
+
+.breadcrumbs[<a href="#1">Automated Testing</a> > <a href="#66">Behavior-Driven Development (BDD)</a>]
+
+To sum up,
+Cucumber is simply another test runner.
+You could implement unit tests, integration tests, API tests or end-to-end tests with it,
+provided that you implement the required code in the Cucumber world and steps.
+
+What makes it valuable compared to standard test frameworks is:
+
+* Tests are written with a **human-readable syntax**,
+  making them easy to understand.
+* With the support of a development team to actually implement the steps,
+  the Gherkin feature files themselves could conceivably be **written by
+  business-oriented team members with no programming skills**.
 
 
 
@@ -1187,30 +1708,17 @@ Use the [Cucumber JS documentation][cucumber-js].
 
 .breadcrumbs[<a href="#1">Automated Testing</a>]
 
-* https://smartbear.com/learn/automated-testing/
-* http://www.continuousagile.com/unblock/test_types.html
-* https://learn.techbeacon.com/units/3-types-automated-tests
-* https://www.softwaretestinghelp.com/automation-testing-tutorial-2/
-* https://www.atlassian.com/continuous-delivery/software-testing/types-of-software-testing
-* https://edwardthienhoang.wordpress.com/2014/10/29/i-dont-write-unit-tests-because-the-excuses/
-
-
-
----
-## TODO
-
-.breadcrumbs[<a href="#1">Automated Testing</a>]
-
-* e2e/ui/gui tests
-* performance tests
-* acceptance tests
-
-* bdd
-* tdd
-
-* unit vs integration test
-
-* write e2e test in JavaScript
+* [Test Automation][automated-tests]
+  * [Unit Testing][unit-testing]
+  * [Integration Testing][integration-testing]
+  * [System Testing][system-testing]
+  * [API Testing][api-testing]
+  * [GUI Testing][gui-testing]
+  * [Performance Testing][performance-testing]
+* [Smartbear - Automated Testing](https://smartbear.com/learn/automated-testing/)
+* [The 3 Types of Automated Tests](https://learn.techbeacon.com/units/3-types-automated-tests)
+* [Atlassian CI/CD - Types of Software Testing](https://www.atlassian.com/continuous-delivery/software-testing/types-of-software-testing)
+* [I Don't Write Unit Tests Because... The Excuses](https://edwardthienhoang.wordpress.com/2014/10/29/i-dont-write-unit-tests-because-the-excuses/)
 
 
 
@@ -1225,6 +1733,7 @@ Use the [Cucumber JS documentation][cucumber-js].
 [composer]: https://getcomposer.org
 [cucumber]: https://cucumber.io/
 [cucumber-js]: https://github.com/cucumber/cucumber-js
+[cucumber-world]: https://github.com/cucumber/cucumber-js/blob/master/docs/support_files/world.md
 [decorator]: https://en.wikipedia.org/wiki/Decorator_pattern
 [doctest]: https://pythontesting.net/framework/doctest/doctest-introduction/
 [dsl]: https://en.wikipedia.org/wiki/Domain-specific_language
@@ -1257,13 +1766,17 @@ Use the [Cucumber JS documentation][cucumber-js].
 [python]: https://www.python.org
 [python-unittest]: https://docs.python.org/3/library/unittest.html
 [qa]: https://en.wikipedia.org/wiki/Quality_assurance
+[rest]: https://en.wikipedia.org/wiki/Representational_state_transfer
 [rest-assured]: http://rest-assured.io
 [robotium]: https://github.com/RobotiumTech/robotium
+[rpc]: https://en.wikipedia.org/wiki/Remote_procedure_call
 [rspec]: http://rspec.info
 [ruby]: https://www.ruby-lang.org
 [ruby-test-unit]: https://test-unit.github.io
 [soapui]: https://www.soapui.org
 [selenium-webdriver]: https://www.seleniumhq.org/projects/webdriver/
+[selenium-webdriver-api]: https://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/
+[selenium-webdriver-api-web-element]: https://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/index_exports_WebElement.html
 [selenium-webdriver-install]: https://www.npmjs.com/package/selenium-webdriver#installation
 [shouldjs]: http://shouldjs.github.io
 [sinon]: https://sinonjs.org
